@@ -4,6 +4,8 @@ QuantaForge 面向不熟悉量子编程框架的科研、教学和开发用户�
 
 项目参加“书生国智科探挑战赛”赛道四“壁仞飞翔杯·量子计算”，对应赛题一“量子计算模拟与算法演示平台”。
 
+公开仓库：[github.com/btlqql/QuantaForge](https://github.com/btlqql/QuantaForge)
+
 ## 核心闭环
 
 ```text
