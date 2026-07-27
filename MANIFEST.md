@@ -14,7 +14,7 @@
 
 ## 最终验收状态
 
-- 本地确定性单元测试：7 / 7 通过。
+- 本地确定性单元测试：8 / 8 通过。
 - 赛事 GPU 完整正确性套件：4 / 4 通过。
 - Bell、GHZ、Grover CPU/GPU 关键结果差：0。
 - QAOA 4 节点环图：割值 4，经典精确最优值 4，近似比 1.0。
@@ -28,6 +28,6 @@ source /usr/local/birensupa/br_container_tools/brsw_set_env.sh
 export PYTHONPATH="$PWD/src"
 python3 -m unittest discover -s tests -v
 python3 scripts/validate_correctness.py
-python3 scripts/benchmark.py --sizes 4,8,12,16,20 --repeats 3
+python3 scripts/benchmark.py --sizes 8,12,16,20,22,24,25,26 --warmups 2 --repeats 7 --batch-size 1
 python3 scripts/check_submission.py
 ```

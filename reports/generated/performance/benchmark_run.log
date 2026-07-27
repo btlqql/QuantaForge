@@ -1,10 +1,12 @@
+[8 qubits] CPU=0.000314s GPU=0.003479s speedup=0.090
+[12 qubits] CPU=0.000451s GPU=0.009194s speedup=0.049
+[16 qubits] CPU=0.004171s GPU=0.014456s speedup=0.289
+[20 qubits] CPU=0.002410s GPU=0.039853s speedup=0.060
+[22 qubits] CPU=0.070292s GPU=0.183311s speedup=0.383
+[24 qubits] CPU=0.896814s GPU=1.485407s speedup=0.604
+[25 qubits] CPU=1.595060s GPU=3.340921s speedup=0.477
+[26 qubits] CPU=2.906168s GPU=7.519024s speedup=0.387
 {
-  "benchmark": "GHZ end-to-end state-vector simulation",
-  "methodology": {
-    "timing": "first execute is reported separately; steady timings follow warm-up",
-    "synchronization": "state is materialized as a NumPy array after every execution",
-    "statistics": "median and interpolated p95 over per-execution batch timings"
-  },
   "records": [
     {
       "qubits": 8,

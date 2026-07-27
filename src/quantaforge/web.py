@@ -10,7 +10,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 from .service import QuantumExperimentAgent
-from .runtime import ensure_biren_process
+from .runtime import BIREN_ENV_SCRIPT, ensure_biren_process, warmup_biren_backend
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -103,7 +103,24 @@ def main() -> None:
     parser.add_argument("--host", default=os.getenv("QUANTAFORGE_HOST", "0.0.0.0"))
     parser.add_argument("--port", type=int, default=int(os.getenv("QUANTAFORGE_PORT", "7860")))
     parser.add_argument("--artifacts", default=os.getenv("QUANTAFORGE_ARTIFACTS", str(PROJECT_ROOT / "artifacts")))
+    parser.add_argument(
+        "--skip-gpu-warmup",
+        action="store_true",
+        help="跳过Web服务启动阶段的壁仞GPU预热",
+    )
     args = parser.parse_args()
+    if BIREN_ENV_SCRIPT.is_file() and not args.skip_gpu_warmup:
+        try:
+            warmup = warmup_biren_backend()
+            print(
+                "QuantaForge GPU warm-up complete: "
+                f"{warmup['elapsed_s']:.6f}s, max_abs_error={warmup['max_abs_error']:.3e}"
+            )
+        except Exception as exc:
+            # The health endpoint and CPU experiments remain useful if a shared
+            # GPU is temporarily unavailable; the first GPU request will expose
+            # the original backend error with full context.
+            print(f"QuantaForge GPU warm-up warning: {type(exc).__name__}: {exc}")
     agent = QuantumExperimentAgent(args.artifacts)
     server = ThreadingHTTPServer((args.host, args.port), create_handler(agent))
     print(f"QuantaForge running at http://{args.host}:{args.port}")

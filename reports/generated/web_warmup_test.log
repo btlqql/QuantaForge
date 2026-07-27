@@ -1,0 +1,5 @@
+QuantaForge GPU warm-up complete: 2.908267s, max_abs_error=2.980e-08
+QuantaForge running at http://127.0.0.1:7861
+[web] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[web] 127.0.0.1 "GET /api/health HTTP/1.1" 200 -
+[web] 127.0.0.1 "POST /api/run HTTP/1.1" 200 -

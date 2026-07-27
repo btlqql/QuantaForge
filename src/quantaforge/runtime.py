@@ -3,7 +3,9 @@ from __future__ import annotations
 import os
 import subprocess
 import sys
+import time
 from pathlib import Path
+from typing import Any
 
 
 BIREN_ENV_SCRIPT = Path("/usr/local/birensupa/br_container_tools/brsw_set_env.sh")
@@ -55,3 +57,22 @@ def ensure_biren_process(*, module: str | None = None, script: str | None = None
         target = str(Path(script or sys.argv[0]).resolve())
         argv = [sys.executable, target, *sys.argv[1:]]
     os.execve(sys.executable, argv, os.environ.copy())
+
+
+def warmup_biren_backend() -> dict[str, Any]:
+    """Run a tiny synchronized circuit once to remove first-request GPU setup cost."""
+    import numpy as np
+    from unitarylab import Circuit
+
+    circuit = Circuit(2, name="quantaforge_gpu_warmup")
+    circuit.h(0)
+    circuit.cx(0, 1)
+    started = time.perf_counter()
+    state = np.asarray(circuit.execute(device="gpu").state).reshape(-1)
+    elapsed = time.perf_counter() - started
+    probabilities = np.abs(state) ** 2
+    expected = np.asarray([0.5, 0.0, 0.0, 0.5])
+    error = float(np.max(np.abs(probabilities - expected)))
+    if error > 1e-5:
+        raise RuntimeError(f"GPU warm-up correctness check failed: max_abs_error={error:.3e}")
+    return {"elapsed_s": elapsed, "max_abs_error": error, "state_dimension": int(state.size)}

@@ -103,7 +103,11 @@ python3 scripts/validate_correctness.py
 ## 性能测试
 
 ```bash
-python3 scripts/benchmark.py --sizes 4,8,12,16,20 --repeats 3
+python3 scripts/benchmark.py \
+  --sizes 8,12,16,20,22,24,25,26 \
+  --warmups 2 \
+  --repeats 7 \
+  --batch-size 1
 ```
 
 测试会生成：
@@ -114,6 +118,7 @@ python3 scripts/benchmark.py --sizes 4,8,12,16,20 --repeats 3
 - `brsmi.txt`
 
 小规模线路可能因GPU启动开销而慢于CPU，报告保留真实测量结果，不预设GPU一定更快。
+基准将首次执行延迟与预热后的稳定态耗时分开，并报告中位数、P95、吞吐率和CPU/GPU完整状态差异。Web服务默认在启动阶段执行一次带正确性检查的GPU预热；如需诊断冷启动，可使用`--skip-gpu-warmup`关闭。
 
 ## 项目结构
 

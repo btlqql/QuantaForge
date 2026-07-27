@@ -45,6 +45,8 @@ QuantaForge 是面向量子模拟与算法执行的可验证实验技能。技�
 3. 生成六步实验计划，向用户明确即将执行的任务。
 4. 使用 UnitaryLab 或 UnitaryLab Algorithms 构建真实量子线路。
 5. 按 `device` 在CPU、壁仞GPU或二者上执行。
+   - Web服务在壁仞环境启动时先执行2比特Bell态GPU预热，并校验解析概率；把后端初始化移出首个用户请求。
+   - CLI为一次性任务，不额外预热，避免为单次执行增加固定成本。
 6. 使用与执行实现相独立的方法验证：
    - Bell/GHZ：解析概率。
    - Grover：解析振幅放大公式。
@@ -78,6 +80,12 @@ python3 -m quantaforge.cli "<实验需求>"
 bash scripts/run_demo.sh
 ```
 
+Web默认执行GPU预热。诊断原始冷启动时使用：
+
+```bash
+python3 -m quantaforge.web --skip-gpu-warmup
+```
+
 完整验证：
 
 ```bash
@@ -87,8 +95,16 @@ python3 scripts/validate_correctness.py
 性能测试：
 
 ```bash
-python3 scripts/benchmark.py --sizes 4,8,12,16,20 --repeats 3
+python3 scripts/benchmark.py --sizes 8,12,16,20,22,24,25,26 --warmups 2 --repeats 7 --batch-size 1
 ```
+
+性能基准必须：
+
+- 分开记录`first_execute_s`与预热后的稳定态耗时。
+- 报告稳定态中位数、P95、吞吐率和逐次样本。
+- 每次将完整状态物化为NumPy数组，确保GPU工作已完成。
+- 同时检查解析GHZ概率和CPU/GPU完整状态最大差异。
+- 将21至26比特视为性能压力测试，不自动扩大自然语言Agent的GHZ能力边界。
 
 ## 输出契约
 
@@ -103,6 +119,17 @@ python3 scripts/benchmark.py --sizes 4,8,12,16,20 --repeats 3
 - `warnings`：性能或能力边界提示。
 
 禁止把模型生成的描述当作验证证据。只有数值检查通过时，`verification.passed` 才能为 `true`。
+
+## 已验证性能边界
+
+赛事Biren106M、UnitaryLab 1.0环境的正式结果：
+
+- Web新进程GPU预热约2.908秒，解析最大误差2.980e-08。
+- 24比特压力测试的最佳GPU/CPU加速比为0.604。
+- 26比特GPU稳定态中位耗时7.519秒，P95为7.777秒。
+- 所有压力测试的CPU/GPU完整状态最大差异均为0。
+
+加速比小于1表示GPU慢于CPU，不得描述为GPU加速。当前优化成果是消除首请求冷启动、扩展压力测试规模和增强统计可复核性。原始证据位于`reports/generated/performance/benchmark.json`、`benchmark.csv`、`performance_report.md`和`reports/generated/web_warmup_test.log`。
 
 ## 约束
 
@@ -119,4 +146,3 @@ python3 scripts/benchmark.py --sizes 4,8,12,16,20 --repeats 3
 - 参数越界时不执行，并返回可操作的修正说明。
 - GPU失败时保留错误，不伪造GPU结果；可提示用户切换CPU诊断。
 - 验证不通过时返回 `partial_success`，不得声称结果正确。
-

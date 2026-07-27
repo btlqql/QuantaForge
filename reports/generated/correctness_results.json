@@ -1,6 +1,6 @@
 {
   "suite": "QuantaForge correctness validation",
-  "elapsed_s": 5.008466482162476,
+  "elapsed_s": 5.116648435592651,
   "environment": {
     "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
     "platform": "linux",
@@ -25,7 +25,7 @@
         "cpu_gpu_max_abs_diff": 0.0,
         "cross_device_passed": true
       },
-      "task_id": "38600bf251b2",
+      "task_id": "6de441c479d2",
       "passed": true
     },
     {
@@ -45,7 +45,7 @@
         "cpu_gpu_max_abs_diff": 0.0,
         "cross_device_passed": true
       },
-      "task_id": "e055b4ecd530",
+      "task_id": "a967c4b832df",
       "passed": true
     },
     {
@@ -64,7 +64,7 @@
         "cpu_gpu_probability_diff": 0.0,
         "cpu_gpu_state_match": true
       },
-      "task_id": "bcc9e19fefa9",
+      "task_id": "09e55b17b0da",
       "passed": true
     },
     {
@@ -84,7 +84,7 @@
           "1010"
         ]
       },
-      "task_id": "f923fa9c8ddc",
+      "task_id": "653a9bf40d8e",
       "passed": true
     }
   ]

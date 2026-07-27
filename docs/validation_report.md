@@ -5,7 +5,7 @@
 
 ## 自动验收结果
 
-`python3 scripts/validate_correctness.py` 在远程环境执行完成，总体结论为 PASS，总耗时 5.198 秒。
+`python3 scripts/validate_correctness.py` 在优化后的远程环境执行完成，总体结论为 PASS，总耗时 5.117 秒；本地确定性单元测试 8 / 8 通过。
 
 | 案例 | 后端 | 独立判据 | 实测结论 |
 | --- | --- | --- | --- |
@@ -23,6 +23,7 @@
 1. `GET /api/health` 返回 `status=ok`。
 2. `POST /api/plan` 返回六步计划。
 3. `POST /api/run` 使用 GPU 完成 Bell 实验，返回 `status=success` 且 `verification.passed=true`。
+4. Web启动阶段GPU预热耗时2.908秒，解析最大误差2.980e-08；预热后健康检查和首个GPU实验均成功。
 
 该测试覆盖“浏览器 API → Agent → UnitaryLab → Biren GPU → 验证 → JSON 返回”的主链路。
 
@@ -30,4 +31,4 @@
 
 - 非交互 SSH 进程默认没有加载 SUPA 动态库路径。启动入口现会检测赛事环境并在必要时用加载后的环境重新执行 Python。
 - UnitaryLab Algorithms 的 Grover 输出采用后端位序展示。系统保留原始状态，同时归一化为用户输入的规范位序后再验证，避免将反序串误判为目标。
-
+- Web服务启动时预热壁仞GPU，将后端首次初始化移出用户请求路径，并在预热过程中验证Bell态概率。
