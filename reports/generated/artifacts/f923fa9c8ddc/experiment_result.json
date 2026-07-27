@@ -1,0 +1,127 @@
+{
+  "spec": {
+    "algorithm": "qaoa",
+    "qubits": 4,
+    "device": "gpu",
+    "target": null,
+    "shots": 1024,
+    "layers": 2,
+    "max_iter": 30,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "seed": 42,
+    "language": "zh",
+    "original_prompt": "用4个量子比特运行QAOA MaxCut，层数2，优化30轮，使用GPU",
+    "task_id": "f923fa9c8ddc"
+  },
+  "status": "success",
+  "summary": "QAOA完成：解0101的割值为4，经典最优值为4，近似比1.000。",
+  "plan": [
+    {
+      "id": "understand",
+      "title": "理解任务",
+      "detail": "识别为QAOA MaxCut，量子比特数4。"
+    },
+    {
+      "id": "validate",
+      "title": "检查参数",
+      "detail": "验证规模、二进制目标、图结构和运行预算，拒绝越界任务。"
+    },
+    {
+      "id": "construct",
+      "title": "构建量子实验",
+      "detail": "生成确定性的量子线路、算法参数与可复现配置。"
+    },
+    {
+      "id": "execute",
+      "title": "执行模拟",
+      "detail": "在GPU后端运行UnitaryLab量子模拟。"
+    },
+    {
+      "id": "verify",
+      "title": "独立验证",
+      "detail": "与小规模经典穷举MaxCut最优值比较"
+    },
+    {
+      "id": "report",
+      "title": "生成报告",
+      "detail": "输出概率、误差、运行指标、能力边界和一键复现命令。"
+    }
+  ],
+  "metrics": {
+    "algorithm": "QAOA MaxCut",
+    "qubits": 4,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "layers": 2,
+    "max_iter": 30,
+    "primary_device": "gpu",
+    "device_runs": {
+      "gpu": {
+        "runtime_s": 0.5252509452402592,
+        "status": "ok",
+        "optimal_bitstring": "0101",
+        "maxcut_value": 4,
+        "optimized_energy": -3.6847811560541848,
+        "quantum_computation_time_s": 0.2902956008911133
+      }
+    }
+  },
+  "probabilities": [],
+  "labels": [],
+  "verification": {
+    "method": "classical_exhaustive_maxcut",
+    "passed": true,
+    "reported_value": 4,
+    "recomputed_value": 4,
+    "exact_optimum": 4,
+    "approximation_ratio": 1.0,
+    "is_exact_optimum": true,
+    "reference_solutions": [
+      "0101",
+      "1010"
+    ]
+  },
+  "artifacts": {
+    "gpu_maxcut_solution": "/artifacts/f923fa9c8ddc/qaoa_gpu/MaxCut_Solution.svg",
+    "gpu_qaoa_circuit": "/artifacts/f923fa9c8ddc/qaoa_gpu/QAOA_Circuit.svg",
+    "gpu_qaoa_convergence": "/artifacts/f923fa9c8ddc/qaoa_gpu/QAOA_Convergence.svg",
+    "experiment_report": "/artifacts/f923fa9c8ddc/experiment_result.json"
+  },
+  "warnings": [],
+  "error": null,
+  "started_at": "2026-07-27T06:01:54.552614+00:00",
+  "finished_at": "2026-07-27T06:01:55.078853+00:00"
+}

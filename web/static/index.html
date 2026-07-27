@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuantaForge · 可验证量子实验智能体</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+    <header class="topbar">
+      <a class="brand" href="#">
+        <span class="brand-mark">QF</span>
+        <span><strong>QuantaForge</strong><small>可验证量子实验智能体</small></span>
+      </a>
+      <div class="runtime-badge"><i></i>Biren GPU Ready</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">NATURAL LANGUAGE · QUANTUM CIRCUIT · VERIFIED RESULT</div>
+        <h1>把一句实验需求，变成<br /><span>可信的量子计算结果</span></h1>
+        <p>自动理解任务、构建线路、调用壁仞GPU、验证正确性，并生成可复现报告。</p>
+      </section>
+
+      <section class="workspace card">
+        <div class="card-head">
+          <div><span class="section-no">01</span><h2>描述你的量子实验</h2></div>
+          <span class="hint">支持 Bell / GHZ / Grover / QAOA</span>
+        </div>
+        <textarea id="prompt" rows="4" placeholder="例如：用5个量子比特运行Grover搜索，目标状态为10110，在CPU和壁仞GPU上对比并验证结果"></textarea>
+        <div class="examples" id="examples"></div>
+        <div class="action-row">
+          <label class="device-select">执行策略
+            <select id="device">
+              <option value="gpu">Biren GPU</option>
+              <option value="both" selected>CPU + GPU 对比</option>
+              <option value="cpu">CPU</option>
+            </select>
+          </label>
+          <div class="buttons">
+            <button id="planButton" class="button secondary">先看实验计划</button>
+            <button id="runButton" class="button primary"><span>运行并验证</span><b>→</b></button>
+          </div>
+        </div>
+        <div id="error" class="error hidden"></div>
+      </section>
+
+      <section id="planSection" class="card hidden">
+        <div class="card-head"><div><span class="section-no">02</span><h2>Agent任务链路</h2></div><span id="taskId" class="mono"></span></div>
+        <div id="plan" class="timeline"></div>
+      </section>
+
+      <section id="resultSection" class="result-grid hidden">
+        <article class="card result-summary">
+          <div class="card-head"><div><span class="section-no">03</span><h2>实验结论</h2></div><span id="status" class="status"></span></div>
+          <p id="summary" class="summary"></p>
+          <div id="metrics" class="metrics"></div>
+        </article>
+
+        <article class="card verification-card">
+          <div class="card-head"><div><span class="section-no">04</span><h2>正确性验证</h2></div></div>
+          <div id="verification" class="verification"></div>
+        </article>
+
+        <article id="probabilityCard" class="card probability-card hidden">
+          <div class="card-head"><div><span class="section-no">05</span><h2>量子态概率</h2></div><span class="hint">Top states</span></div>
+          <div id="probabilities" class="bars"></div>
+        </article>
+
+        <article class="card artifacts-card">
+          <div class="card-head"><div><span class="section-no">06</span><h2>实验产物</h2></div></div>
+          <div id="artifacts" class="artifact-list"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer>QuantaForge 0.1 · UnitaryLab × Biren106M · 结果先验证，再解释</footer>
+    <script src="/app.js"></script>
+  </body>
+</html>
+

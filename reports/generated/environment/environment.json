@@ -1,0 +1,17 @@
+{
+  "platform": "Linux-5.15.0-119-generic-x86_64-with-glibc2.35",
+  "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+  "packages": {
+    "numpy": "1.23.5",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.9",
+    "networkx": "3.4.2",
+    "unitarylab": "1.0.0",
+    "unitarylab-algorithms": "1.1.0",
+    "torch": "2.9.0",
+    "torch-br": "1.10.0.20900+br1xx",
+    "bpex": "0.6.1+br1xx"
+  },
+  "brsmi": "Mon Jul 27 14:01:56 2026\n+------------------------------------------------------------------------------+\n| BR-SMI 1.11.0          Driver Version: 1.11.0          SUPA Version: 1.11    |\n+----------------------------+-----------------------+-------------------------+\n|   GPU                 Name |                Bus-Id |    Volatile Uncorr. ECC |\n|  Temp  Perf  Pwr:Usage/Cap |          Memory-Usage |    GPU-Util  Compute M. |\n|              Persistence-M |                       |                  SVI M. |\n+============================+=======================+=========================+\n|     0            Biren106M |      00000000:C1:00.0 |                       0 |\n|    37    P0     62W / 400W |       0MiB / 32512MiB |          0%     Default |\n|                        Off |                       |                Disabled |\n+----------------------------+-----------------------+-------------------------+\n+------------------------------------------------------------------------------+\n| Processes:                                                                   |\n| GPU   SVI Dev        PID   Process Name                     GPU Memory Usage |\n+==============================================================================+\n|  No running process found.                                                   |\n+------------------------------------------------------------------------------+",
+  "kernel": "Linux 5.15.0-119-generic #129-Ubuntu SMP Fri Aug 2 19:25:20 UTC 2024 x86_64 GNU/Linux"
+}

@@ -1,0 +1,91 @@
+{
+  "suite": "QuantaForge correctness validation",
+  "elapsed_s": 5.008466482162476,
+  "environment": {
+    "python": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+    "platform": "linux",
+    "biren_visible": true
+  },
+  "passed": true,
+  "cases": [
+    {
+      "case": "bell",
+      "status": "success",
+      "summary": "Bell实验完成：2量子比特，解析验证通过。",
+      "verification": {
+        "method": "analytic_state_probability",
+        "passed": true,
+        "max_abs_diff": 2.9802322387695312e-08,
+        "probability_sum_error": 5.960464477539063e-08,
+        "tolerance": 1e-05,
+        "expected_nonzero_states": {
+          "00": 0.5,
+          "11": 0.5
+        },
+        "cpu_gpu_max_abs_diff": 0.0,
+        "cross_device_passed": true
+      },
+      "task_id": "38600bf251b2",
+      "passed": true
+    },
+    {
+      "case": "ghz",
+      "status": "success",
+      "summary": "GHZ实验完成：5量子比特，解析验证通过。",
+      "verification": {
+        "method": "analytic_state_probability",
+        "passed": true,
+        "max_abs_diff": 2.9802322387695312e-08,
+        "probability_sum_error": 5.960464477539063e-08,
+        "tolerance": 1e-05,
+        "expected_nonzero_states": {
+          "00000": 0.5,
+          "11111": 0.5
+        },
+        "cpu_gpu_max_abs_diff": 0.0,
+        "cross_device_passed": true
+      },
+      "task_id": "e055b4ecd530",
+      "passed": true
+    },
+    {
+      "case": "grover",
+      "status": "success",
+      "summary": "Grover搜索完成：找到状态10110，目标态概率0.999181，理论验证通过。",
+      "verification": {
+        "method": "analytic_amplitude_amplification",
+        "passed": true,
+        "target_match": true,
+        "expected_iterations": 4,
+        "expected_target_probability": 0.9991823155432941,
+        "actual_target_probability": 0.99918133020401,
+        "probability_error": 9.853392840541986e-07,
+        "tolerance": 1e-05,
+        "cpu_gpu_probability_diff": 0.0,
+        "cpu_gpu_state_match": true
+      },
+      "task_id": "bcc9e19fefa9",
+      "passed": true
+    },
+    {
+      "case": "qaoa",
+      "status": "success",
+      "summary": "QAOA完成：解0101的割值为4，经典最优值为4，近似比1.000。",
+      "verification": {
+        "method": "classical_exhaustive_maxcut",
+        "passed": true,
+        "reported_value": 4,
+        "recomputed_value": 4,
+        "exact_optimum": 4,
+        "approximation_ratio": 1.0,
+        "is_exact_optimum": true,
+        "reference_solutions": [
+          "0101",
+          "1010"
+        ]
+      },
+      "task_id": "f923fa9c8ddc",
+      "passed": true
+    }
+  ]
+}

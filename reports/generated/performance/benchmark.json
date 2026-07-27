@@ -1,0 +1,100 @@
+{
+  "benchmark": "GHZ state-vector simulation",
+  "records": [
+    {
+      "qubits": 4,
+      "device": "cpu",
+      "repeats": 3,
+      "median_runtime_s": 0.0002645677886903286,
+      "min_runtime_s": 0.00020286208018660545,
+      "max_runtime_s": 2.5675723240710795,
+      "max_abs_error": 2.9802322387695312e-08
+    },
+    {
+      "qubits": 4,
+      "device": "gpu",
+      "repeats": 3,
+      "median_runtime_s": 0.0023538838140666485,
+      "min_runtime_s": 0.002041204832494259,
+      "max_runtime_s": 0.44265506928786635,
+      "max_abs_error": 2.9802322387695312e-08,
+      "speedup_vs_cpu": 0.11239628188498073
+    },
+    {
+      "qubits": 8,
+      "device": "cpu",
+      "repeats": 3,
+      "median_runtime_s": 0.00033448776230216026,
+      "min_runtime_s": 0.0003052167594432831,
+      "max_runtime_s": 0.0004542930983006954,
+      "max_abs_error": 2.9802322387695312e-08
+    },
+    {
+      "qubits": 8,
+      "device": "gpu",
+      "repeats": 3,
+      "median_runtime_s": 0.003630459774285555,
+      "min_runtime_s": 0.003503770101815462,
+      "max_runtime_s": 0.0037736212834715843,
+      "max_abs_error": 2.9802322387695312e-08,
+      "speedup_vs_cpu": 0.09213371944548945
+    },
+    {
+      "qubits": 12,
+      "device": "cpu",
+      "repeats": 3,
+      "median_runtime_s": 0.0004758322611451149,
+      "min_runtime_s": 0.00047361524775624275,
+      "max_runtime_s": 0.000555987935513258,
+      "max_abs_error": 2.9802322387695312e-08
+    },
+    {
+      "qubits": 12,
+      "device": "gpu",
+      "repeats": 3,
+      "median_runtime_s": 0.008570444770157337,
+      "min_runtime_s": 0.008542461786419153,
+      "max_runtime_s": 0.008580778259783983,
+      "max_abs_error": 2.9802322387695312e-08,
+      "speedup_vs_cpu": 0.05552013622466638
+    },
+    {
+      "qubits": 16,
+      "device": "cpu",
+      "repeats": 3,
+      "median_runtime_s": 0.0014882078394293785,
+      "min_runtime_s": 0.0013820119202136993,
+      "max_runtime_s": 0.002997129689902067,
+      "max_abs_error": 2.9802322387695312e-08
+    },
+    {
+      "qubits": 16,
+      "device": "gpu",
+      "repeats": 3,
+      "median_runtime_s": 0.01464943215250969,
+      "min_runtime_s": 0.014592749997973442,
+      "max_runtime_s": 0.5841747191734612,
+      "max_abs_error": 2.9802322387695312e-08,
+      "speedup_vs_cpu": 0.1015880905100082
+    },
+    {
+      "qubits": 20,
+      "device": "cpu",
+      "repeats": 3,
+      "median_runtime_s": 0.0032339468598365784,
+      "min_runtime_s": 0.0030182646587491035,
+      "max_runtime_s": 0.004340031184256077,
+      "max_abs_error": 2.9802322387695312e-08
+    },
+    {
+      "qubits": 20,
+      "device": "gpu",
+      "repeats": 3,
+      "median_runtime_s": 0.04178151907399297,
+      "min_runtime_s": 0.03980460995808244,
+      "max_runtime_s": 0.04217518586665392,
+      "max_abs_error": 2.9802322387695312e-08,
+      "speedup_vs_cpu": 0.07740137102505587
+    }
+  ]
+}

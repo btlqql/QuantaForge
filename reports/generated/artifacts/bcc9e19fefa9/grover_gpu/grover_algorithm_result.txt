@@ -1,0 +1,35 @@
+
+=========================
+Grover Algorithm Algorithm Result
+=========================
+Status: partial_success
+
+Input parameters:
+  - Number of qubits (n): 5
+  - Target state (binary string): 10110
+
+Runtime logs:
+  - Stage 1/5: Preparing algorithm parameters...
+  -   - Data register size: n = 5 (total 6 qubits)
+  -   - Initial success probability p: 0.0312
+  -   - Computed iteration count (Reps): 4
+  - Stage 1/5 complete ✓
+  - Stage 2/5: Building quantum circuit...
+  - Stage 2/5 complete ✓
+  - Stage 3/5: Running quantum simulation...
+  -   - Computation time: 0.0622 s
+  - Stage 3/5 complete ✓
+  - Stage 4/5: Running classical post-processing (verifying amplification effect)...
+  -   - Initial target-state probability: 0.0312
+  -   - Amplified target-state probability: 0.9992
+  -   - Result check: find target state 01101
+  - Stage 4/5 complete ✓
+  - Stage 5/5: Exporting quantum circuit diagram...
+  -   Circuit diagram saved: /workspace/quantaforge/reports/generated/artifacts/bcc9e19fefa9/grover_gpu/grover_algorithm_circuit.svg
+
+Output information:
+  - Amplified target-state probability: 0.99918133020401
+  - Result: 01101
+
+Summary:
+  Execution successful. Find state 01101 with probability 0.9992.
