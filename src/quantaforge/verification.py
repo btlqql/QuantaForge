@@ -8,10 +8,15 @@ import numpy as np
 
 
 def verify_ghz(probabilities: Iterable[float], qubits: int, tolerance: float = 1e-5) -> dict:
-    probs = np.asarray(list(probabilities), dtype=float)
-    expected = np.zeros(2**qubits, dtype=float)
-    expected[0] = expected[-1] = 0.5
-    max_abs_diff = float(np.max(np.abs(probs - expected)))
+    if isinstance(probabilities, np.ndarray):
+        probs = np.asarray(probabilities).reshape(-1)
+    else:
+        probs = np.fromiter(probabilities, dtype=float, count=2**qubits)
+    if probs.size != 2**qubits:
+        raise ValueError(f"GHZ概率向量维度应为{2**qubits}，实际为{probs.size}。")
+    endpoint_error = max(abs(float(probs[0]) - 0.5), abs(float(probs[-1]) - 0.5))
+    interior_max = float(np.max(np.abs(probs[1:-1]))) if probs.size > 2 else 0.0
+    max_abs_diff = max(endpoint_error, interior_max)
     probability_sum_error = abs(float(probs.sum()) - 1.0)
     return {
         "method": "analytic_state_probability",
@@ -76,4 +81,3 @@ def verify_qaoa(bits: str, value: int, qubits: int, edges: list[tuple[int, int]]
         "is_exact_optimum": value == optimum,
         "reference_solutions": optimal_bits[:8],
     }
-

@@ -14,6 +14,9 @@ from .runtime import ensure_algorithm_execute_compat
 from .verification import verify_ghz, verify_grover, verify_qaoa
 
 
+GHZ_INLINE_PROBABILITY_LIMIT = 4096
+
+
 def run_experiment(spec: ExperimentSpec, artifact_root: Path) -> ExperimentResult:
     spec.validate()
     task_dir = artifact_root / spec.task_id
@@ -78,22 +81,46 @@ def _run_ghz(spec: ExperimentSpec, task_dir: Path, result: ExperimentResult) -> 
         verification["cpu_gpu_max_abs_diff"] = float(np.max(np.abs(states["cpu"] - states["gpu"])))
         verification["cross_device_passed"] = verification["cpu_gpu_max_abs_diff"] <= 1e-5
 
-    result.probabilities = probabilities.tolist()
-    result.labels = [format(index, f"0{spec.qubits}b") for index in range(2**spec.qubits)]
+    result.probabilities, result.labels, probability_output_mode = _ghz_output_distribution(
+        probabilities, spec.qubits
+    )
     result.metrics = {
         "algorithm": "Bell" if spec.algorithm == "bell" else "GHZ",
         "qubits": spec.qubits,
         "state_dimension": 2**spec.qubits,
+        "probability_output_mode": probability_output_mode,
+        "returned_probability_states": len(result.probabilities),
         "primary_device": primary,
         "device_runs": device_runs,
     }
     result.verification = verification
+    if probability_output_mode == "sparse_nonzero":
+        result.warnings.append(
+            f"完整{2**spec.qubits}维概率向量已参与正确性验证；Web响应仅返回GHZ的两个非零态。"
+        )
     result.status = "success" if verification["passed"] else "partial_success"
     result.summary = (
         f"{result.metrics['algorithm']}实验完成：{spec.qubits}量子比特，"
         f"解析验证{'通过' if verification['passed'] else '未通过'}。"
     )
     result.artifacts["circuit"] = _artifact_url(spec.task_id, circuit_path, task_dir)
+
+
+def _ghz_output_distribution(
+    probabilities: np.ndarray, qubits: int
+) -> tuple[list[float], list[str], str]:
+    probabilities = np.asarray(probabilities).reshape(-1)
+    if probabilities.size <= GHZ_INLINE_PROBABILITY_LIMIT:
+        return (
+            probabilities.tolist(),
+            [format(index, f"0{qubits}b") for index in range(probabilities.size)],
+            "full",
+        )
+    return (
+        [float(probabilities[0]), float(probabilities[-1])],
+        ["0" * qubits, "1" * qubits],
+        "sparse_nonzero",
+    )
 
 
 def _run_grover(spec: ExperimentSpec, task_dir: Path, result: ExperimentResult) -> None:

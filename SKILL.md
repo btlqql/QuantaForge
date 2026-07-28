@@ -124,6 +124,7 @@ python3 scripts/benchmark.py --sizes 8,12,16,20,22,24,25,26 --warmups 2 --repeat
 - `plan`：六步任务链路。
 - `status`：`success`、`partial_success`或`failed`。
 - `metrics`：设备、规模、运行时间和算法指标。
+- `probabilities`与`labels`：量子态概率和规范位序标签；大规模GHZ完整向量仍参与验证，但响应仅返回两个非零态，并以`metrics.probability_output_mode=sparse_nonzero`标记。
 - `verification`：验证方法、误差、阈值和通过状态。
 - `artifacts`：线路、日志、结果和报告链接。
 - `warnings`：性能或能力边界提示。
