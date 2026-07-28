@@ -5,7 +5,7 @@
 
 ## 自动验收结果
 
-`python3 scripts/validate_correctness.py` 在优化后的远程环境执行完成，总体结论为 PASS，总耗时 5.117 秒。新增自动单元/接口测试17 / 17通过，可复现QA 9 / 9通过，其中4条正常算法实际执行、5条异常请求验证结构化拒绝。
+`python3 scripts/validate_correctness.py` 在优化后的远程环境执行完成，总体结论为 PASS，总耗时 5.117 秒。更新后的自动单元/接口测试18 / 18通过，可复现QA 9 / 9通过，其中4条正常算法实际执行、5条异常请求验证结构化拒绝。
 
 | 案例 | 后端 | 独立判据 | 实测结论 |
 | --- | --- | --- | --- |
@@ -29,7 +29,7 @@
 
 ## 结构化错误与可复现QA
 
-- GHZ 25比特、Grover 13比特、QAOA 12比特和QAOA 8层请求均返回`CAPABILITY_LIMIT_EXCEEDED`。
+- GHZ 26比特现与性能实测边界一致并通过参数校验；GHZ 27比特、Grover 13比特、QAOA 12比特和QAOA 8层请求均返回`CAPABILITY_LIMIT_EXCEEDED`。
 - 错误对象包含`code`、`type`、`http_status`、`message`、`field`、`requested`、`allowed`、恢复/重试标志和修改建议。
 - Web越界请求实测返回HTTP 422，`verification.executed=false`，证明拒绝发生在后端执行前。
 - `python3 qa/run_reproducible_qa.py`生成9段原始Agent问答和`qa/results`中的机器可读报告，任一不匹配时以非零状态退出。

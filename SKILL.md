@@ -114,7 +114,7 @@ python3 scripts/benchmark.py --sizes 8,12,16,20,22,24,25,26 --warmups 2 --repeat
 - 报告稳定态中位数、P95、吞吐率和逐次样本。
 - 每次将完整状态物化为NumPy数组，确保GPU工作已完成。
 - 同时检查解析GHZ概率和CPU/GPU完整状态最大差异。
-- 将21至26比特视为性能压力测试，不自动扩大自然语言Agent的GHZ能力边界。
+- 21至26比特已在壁仞GPU性能压力测试中逐级实测，可作为自然语言Agent的GHZ合法任务；27比特及以上在执行前结构化拒绝。
 
 ## 输出契约
 
@@ -144,7 +144,7 @@ python3 scripts/benchmark.py --sizes 8,12,16,20,22,24,25,26 --warmups 2 --repeat
 
 ## 约束
 
-- GHZ：3至20量子比特。
+- GHZ：3至26量子比特；26比特已在Biren106M上实测，27比特及以上返回`CAPABILITY_LIMIT_EXCEEDED`。
 - Grover：2至12个数据量子比特，目标必须等长。
 - QAOA：2至10量子比特、1至6层、5至100轮。
 - 默认随机种子为42。

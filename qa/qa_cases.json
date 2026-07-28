@@ -30,9 +30,9 @@
   {
     "id": "05_ghz_oversize",
     "title": "GHZ超规模请求结构化拒绝",
-    "prompt": "用25个量子比特构建GHZ态并使用GPU执行",
+    "prompt": "用27个量子比特构建GHZ态并使用GPU执行",
     "device": "gpu",
-    "expected": {"status": "failed", "error_code": "CAPABILITY_LIMIT_EXCEEDED", "field": "qubits", "requested": 25}
+    "expected": {"status": "failed", "error_code": "CAPABILITY_LIMIT_EXCEEDED", "field": "qubits", "requested": 27}
   },
   {
     "id": "06_grover_oversize",

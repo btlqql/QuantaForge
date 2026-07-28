@@ -11,6 +11,8 @@ from .errors import capability_limit_error, invalid_parameter_error
 
 Algorithm = Literal["bell", "ghz", "grover", "qaoa"]
 Device = Literal["cpu", "gpu", "both"]
+GHZ_MIN_QUBITS = 3
+GHZ_MAX_QUBITS = 26
 
 
 @dataclass(slots=True)
@@ -41,13 +43,13 @@ class ExperimentSpec:
                     suggestions=["将量子比特数改为2", "如需多比特纠缠态，请选择GHZ实验"],
                     task_id=self.task_id,
                 )
-        if self.algorithm == "ghz" and not 3 <= self.qubits <= 20:
+        if self.algorithm == "ghz" and not GHZ_MIN_QUBITS <= self.qubits <= GHZ_MAX_QUBITS:
             raise capability_limit_error(
                 algorithm="ghz",
                 field_name="qubits",
                 requested=self.qubits,
-                minimum=3,
-                maximum=20,
+                minimum=GHZ_MIN_QUBITS,
+                maximum=GHZ_MAX_QUBITS,
                 label="量子比特数",
                 task_id=self.task_id,
             )

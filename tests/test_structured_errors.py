@@ -19,11 +19,17 @@ class StructuredErrorTests(unittest.TestCase):
 
     def test_ghz_oversize(self):
         self.assert_structured_error(
-            "用25个量子比特构建GHZ态，使用CPU执行",
+            "用27个量子比特构建GHZ态，使用CPU执行",
             "CAPABILITY_LIMIT_EXCEEDED",
             "qubits",
-            25,
+            27,
         )
+
+    def test_ghz_maximum_is_accepted(self):
+        spec = parse_experiment("用26个量子比特构建GHZ态，使用GPU执行", default_device="gpu")
+        self.assertEqual(spec.algorithm, "ghz")
+        self.assertEqual(spec.qubits, 26)
+        self.assertEqual(spec.device, "gpu")
 
     def test_grover_oversize(self):
         self.assert_structured_error(

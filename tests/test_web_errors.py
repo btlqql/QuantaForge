@@ -25,7 +25,7 @@ class WebStructuredErrorTests(unittest.TestCase):
             request = Request(
                 f"http://127.0.0.1:{server.server_port}/api/run",
                 data=json.dumps(
-                    {"prompt": "用25个量子比特构建GHZ态并使用GPU执行", "device": "gpu"}
+                    {"prompt": "用27个量子比特构建GHZ态并使用GPU执行", "device": "gpu"}
                 ).encode("utf-8"),
                 headers={"Content-Type": "application/json"},
                 method="POST",
@@ -36,8 +36,8 @@ class WebStructuredErrorTests(unittest.TestCase):
             payload = json.loads(context.exception.read().decode("utf-8"))
             self.assertEqual(payload["status"], "failed")
             self.assertEqual(payload["error"]["code"], "CAPABILITY_LIMIT_EXCEEDED")
-            self.assertEqual(payload["error"]["requested"], 25)
-            self.assertEqual(payload["error"]["allowed"], {"min": 3, "max": 20})
+            self.assertEqual(payload["error"]["requested"], 27)
+            self.assertEqual(payload["error"]["allowed"], {"min": 3, "max": 26})
             self.assertFalse(payload["verification"]["executed"])
         finally:
             server.shutdown()
