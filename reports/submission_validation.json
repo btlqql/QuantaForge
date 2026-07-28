@@ -2,7 +2,7 @@
   "project": "QuantaForge",
   "passed": true,
   "required_files": 16,
-  "agent_logs": 7,
+  "agent_logs": 8,
   "raw_agent_transcripts": 9,
   "reproducible_qa_passed": 9,
   "errors": []

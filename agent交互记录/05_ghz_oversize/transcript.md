@@ -4,16 +4,16 @@
 
 ## 元数据
 
-- 开始时间（UTC）：`2026-07-28T09:16:09.154319+00:00`
-- 结束时间（UTC）：`2026-07-28T09:16:09.154319+00:00`
-- 耗时：`0.000135s`
+- 开始时间（UTC）：`2026-07-28T10:36:37.700945+00:00`
+- 结束时间（UTC）：`2026-07-28T10:36:37.700945+00:00`
+- 耗时：`0.000133s`
 - 设备请求：`gpu`
 - 实测结论：`PASS`
 
 ## 用户原始输入
 
 ```text
-用25个量子比特构建GHZ态并使用GPU执行
+用27个量子比特构建GHZ态并使用GPU执行
 ```
 
 ## Agent 原始结构化响应
@@ -21,8 +21,8 @@
 ```json
 {
   "status": "failed",
-  "task_id": "a7a8048d78e3",
-  "summary": "请求未执行：请求的GHZ量子比特数为25，超出当前允许范围3至20。",
+  "task_id": "0be1abd6ffab",
+  "summary": "请求未执行：请求的GHZ量子比特数为27，超出当前允许范围3至26。",
   "plan": [],
   "metrics": {},
   "verification": {
@@ -34,23 +34,23 @@
   "error": {
     "code": "CAPABILITY_LIMIT_EXCEEDED",
     "type": "validation_error",
-    "message": "请求的GHZ量子比特数为25，超出当前允许范围3至20。",
+    "message": "请求的GHZ量子比特数为27，超出当前允许范围3至26。",
     "http_status": 422,
     "recoverable": true,
     "retryable": false,
     "suggestions": [
-      "将量子比特数调整到3至20",
+      "将量子比特数调整到3至26",
       "修改请求后重新提交，当前请求未启动量子执行"
     ],
     "field": "qubits",
     "algorithm": "ghz",
-    "requested": 25,
+    "requested": 27,
     "allowed": {
       "min": 3,
-      "max": 20
+      "max": 26
     },
     "details": {
-      "task_id": "a7a8048d78e3"
+      "task_id": "0be1abd6ffab"
     }
   }
 }

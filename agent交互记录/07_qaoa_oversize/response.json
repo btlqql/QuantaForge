@@ -1,6 +1,6 @@
 {
   "status": "failed",
-  "task_id": "1b86332107d4",
+  "task_id": "dbfc83de8d03",
   "summary": "请求未执行：请求的QAOA量子比特数为12，超出当前允许范围2至10。",
   "plan": [],
   "metrics": {},
@@ -29,7 +29,7 @@
       "max": 10
     },
     "details": {
-      "task_id": "1b86332107d4"
+      "task_id": "dbfc83de8d03"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "status": "failed",
-  "task_id": "a7a8048d78e3",
-  "summary": "请求未执行：请求的GHZ量子比特数为25，超出当前允许范围3至20。",
+  "task_id": "0be1abd6ffab",
+  "summary": "请求未执行：请求的GHZ量子比特数为27，超出当前允许范围3至26。",
   "plan": [],
   "metrics": {},
   "verification": {
@@ -13,23 +13,23 @@
   "error": {
     "code": "CAPABILITY_LIMIT_EXCEEDED",
     "type": "validation_error",
-    "message": "请求的GHZ量子比特数为25，超出当前允许范围3至20。",
+    "message": "请求的GHZ量子比特数为27，超出当前允许范围3至26。",
     "http_status": 422,
     "recoverable": true,
     "retryable": false,
     "suggestions": [
-      "将量子比特数调整到3至20",
+      "将量子比特数调整到3至26",
       "修改请求后重新提交，当前请求未启动量子执行"
     ],
     "field": "qubits",
     "algorithm": "ghz",
-    "requested": 25,
+    "requested": 27,
     "allowed": {
       "min": 3,
-      "max": 20
+      "max": 26
     },
     "details": {
-      "task_id": "a7a8048d78e3"
+      "task_id": "0be1abd6ffab"
     }
   }
 }

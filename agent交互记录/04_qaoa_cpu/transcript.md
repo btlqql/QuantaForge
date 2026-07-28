@@ -4,9 +4,9 @@
 
 ## 元数据
 
-- 开始时间（UTC）：`2026-07-28T09:16:08.510699+00:00`
-- 结束时间（UTC）：`2026-07-28T09:16:09.151138+00:00`
-- 耗时：`0.640906s`
+- 开始时间（UTC）：`2026-07-28T10:36:37.030781+00:00`
+- 结束时间（UTC）：`2026-07-28T10:36:37.698782+00:00`
+- 耗时：`0.668454s`
 - 设备请求：`cpu`
 - 实测结论：`PASS`
 
@@ -49,7 +49,7 @@
     "seed": 42,
     "language": "zh",
     "original_prompt": "用4个量子比特运行QAOA MaxCut，层数2，优化30轮，使用CPU",
-    "task_id": "9b673c1aad50"
+    "task_id": "402e419541cf"
   },
   "status": "success",
   "summary": "QAOA完成：解0101的割值为4，经典最优值为4，近似比1.000。",
@@ -111,12 +111,12 @@
     "primary_device": "cpu",
     "device_runs": {
       "cpu": {
-        "runtime_s": 0.6321383000031346,
+        "runtime_s": 0.6560745000024326,
         "status": "ok",
         "optimal_bitstring": "0101",
         "maxcut_value": 4,
         "optimized_energy": -3.796683180297726,
-        "quantum_computation_time_s": 0.16587018966674805
+        "quantum_computation_time_s": 0.19990253448486328
       }
     }
   },
@@ -136,15 +136,15 @@
     ]
   },
   "artifacts": {
-    "cpu_maxcut_solution": "/artifacts/9b673c1aad50/qaoa_cpu/MaxCut_Solution.svg",
-    "cpu_qaoa_circuit": "/artifacts/9b673c1aad50/qaoa_cpu/QAOA_Circuit.svg",
-    "cpu_qaoa_convergence": "/artifacts/9b673c1aad50/qaoa_cpu/QAOA_Convergence.svg",
-    "experiment_report": "/artifacts/9b673c1aad50/experiment_result.json"
+    "cpu_maxcut_solution": "/artifacts/402e419541cf/qaoa_cpu/MaxCut_Solution.svg",
+    "cpu_qaoa_circuit": "/artifacts/402e419541cf/qaoa_cpu/QAOA_Circuit.svg",
+    "cpu_qaoa_convergence": "/artifacts/402e419541cf/qaoa_cpu/QAOA_Convergence.svg",
+    "experiment_report": "/artifacts/402e419541cf/experiment_result.json"
   },
   "warnings": [],
   "error": null,
-  "started_at": "2026-07-28T09:16:08.511748+00:00",
-  "finished_at": "2026-07-28T09:16:09.147901+00:00"
+  "started_at": "2026-07-28T10:36:37.031889+00:00",
+  "finished_at": "2026-07-28T10:36:37.696684+00:00"
 }
 ```
 
