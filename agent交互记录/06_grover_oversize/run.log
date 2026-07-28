@@ -1,7 +1,7 @@
 case=06_grover_oversize
-started_at=2026-07-28T10:36:37.703044+00:00
-finished_at=2026-07-28T10:36:37.703044+00:00
-elapsed_s=0.000110800
+started_at=2026-07-28T10:40:44.467049+00:00
+finished_at=2026-07-28T10:40:44.467049+00:00
+elapsed_s=0.000128000
 passed=True
 stdout:
 

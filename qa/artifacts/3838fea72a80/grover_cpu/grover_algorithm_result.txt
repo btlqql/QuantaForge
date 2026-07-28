@@ -17,7 +17,7 @@ Runtime logs:
   - Stage 2/5: Building quantum circuit...
   - Stage 2/5 complete ✓
   - Stage 3/5: Running quantum simulation...
-  -   - Computation time: 0.0074 s
+  -   - Computation time: 0.0064 s
   - Stage 3/5 complete ✓
   - Stage 4/5: Running classical post-processing (verifying amplification effect)...
   -   - Initial target-state probability: 0.0312
@@ -25,7 +25,7 @@ Runtime logs:
   -   - Result check: find target state 01101
   - Stage 4/5 complete ✓
   - Stage 5/5: Exporting quantum circuit diagram...
-  -   Circuit diagram saved: C:\Users\ASUS\Documents\Codex\2026-07-22\https-ai4scompetition-intern-ai-org-cn\work\QuantaForge\qa\artifacts\932dcf086c94\grover_cpu/grover_algorithm_circuit.svg
+  -   Circuit diagram saved: C:\Users\ASUS\Documents\Codex\2026-07-22\https-ai4scompetition-intern-ai-org-cn\work\QuantaForge\qa\artifacts\3838fea72a80\grover_cpu/grover_algorithm_circuit.svg
 
 Output information:
   - Amplified target-state probability: 0.99918133020401

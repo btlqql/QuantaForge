@@ -1,7 +1,7 @@
 case=01_bell_cpu
-started_at=2026-07-28T10:36:35.564889+00:00
-finished_at=2026-07-28T10:36:36.013484+00:00
-elapsed_s=0.448743900
+started_at=2026-07-28T10:40:42.409490+00:00
+finished_at=2026-07-28T10:40:42.776556+00:00
+elapsed_s=0.367571300
 passed=True
 stdout:
 

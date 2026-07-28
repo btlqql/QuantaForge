@@ -4,9 +4,9 @@
 
 ## 元数据
 
-- 开始时间（UTC）：`2026-07-28T10:36:35.564889+00:00`
-- 结束时间（UTC）：`2026-07-28T10:36:36.013484+00:00`
-- 耗时：`0.448744s`
+- 开始时间（UTC）：`2026-07-28T10:40:42.409490+00:00`
+- 结束时间（UTC）：`2026-07-28T10:40:42.776556+00:00`
+- 耗时：`0.367571s`
 - 设备请求：`cpu`
 - 实测结论：`PASS`
 
@@ -32,7 +32,7 @@
     "seed": 42,
     "language": "zh",
     "original_prompt": "构建Bell纠缠态，使用CPU执行并验证结果",
-    "task_id": "b6d1e46a6350"
+    "task_id": "947b03cf76bc"
   },
   "status": "success",
   "summary": "Bell实验完成：2量子比特，解析验证通过。",
@@ -72,10 +72,12 @@
     "algorithm": "Bell",
     "qubits": 2,
     "state_dimension": 4,
+    "probability_output_mode": "full",
+    "returned_probability_states": 4,
     "primary_device": "cpu",
     "device_runs": {
       "cpu": {
-        "runtime_s": 0.04502340000180993,
+        "runtime_s": 0.007578600001579616,
         "state_norm": 0.9999999403953552
       }
     }
@@ -104,13 +106,13 @@
     }
   },
   "artifacts": {
-    "circuit": "/artifacts/b6d1e46a6350/quantum_circuit.svg",
-    "experiment_report": "/artifacts/b6d1e46a6350/experiment_result.json"
+    "circuit": "/artifacts/947b03cf76bc/quantum_circuit.svg",
+    "experiment_report": "/artifacts/947b03cf76bc/experiment_result.json"
   },
   "warnings": [],
   "error": null,
-  "started_at": "2026-07-28T10:36:35.571123+00:00",
-  "finished_at": "2026-07-28T10:36:36.010374+00:00"
+  "started_at": "2026-07-28T10:40:42.414696+00:00",
+  "finished_at": "2026-07-28T10:40:42.774381+00:00"
 }
 ```
 

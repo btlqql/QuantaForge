@@ -1,7 +1,7 @@
 case=03_grover_cpu
-started_at=2026-07-28T10:36:36.171230+00:00
-finished_at=2026-07-28T10:36:37.027638+00:00
-elapsed_s=0.856712800
+started_at=2026-07-28T10:40:42.936046+00:00
+finished_at=2026-07-28T10:40:43.795478+00:00
+elapsed_s=0.859466000
 passed=True
 stdout:
 [GROVER]: Starting Grover Algorithm
@@ -16,7 +16,7 @@ stdout:
 [GROVER]: Stage 2/5: Building quantum circuit...
 [GROVER]: Stage 2/5 complete ✓
 [GROVER]: Stage 3/5: Running quantum simulation...
-[GROVER]:   - Computation time: 0.0074 s
+[GROVER]:   - Computation time: 0.0064 s
 [GROVER]: Stage 3/5 complete ✓
 [GROVER]: Stage 4/5: Running classical post-processing (verifying amplification effect)...
 [GROVER]:   - Initial target-state probability: 0.0312
@@ -27,8 +27,8 @@ stdout:
 [GROVER]: Output information: 
         - Amplified target-state probability = 0.99918133020401
         - Result = 01101
-[GROVER]:   Circuit diagram saved: C:\Users\ASUS\Documents\Codex\2026-07-22\https-ai4scompetition-intern-ai-org-cn\work\QuantaForge\qa\artifacts\932dcf086c94\grover_cpu/grover_algorithm_circuit.svg
-[GROVER]:   Result saved: C:\Users\ASUS\Documents\Codex\2026-07-22\https-ai4scompetition-intern-ai-org-cn\work\QuantaForge\qa\artifacts\932dcf086c94\grover_cpu/grover_algorithm_result.txt
+[GROVER]:   Circuit diagram saved: C:\Users\ASUS\Documents\Codex\2026-07-22\https-ai4scompetition-intern-ai-org-cn\work\QuantaForge\qa\artifacts\3838fea72a80\grover_cpu/grover_algorithm_circuit.svg
+[GROVER]:   Result saved: C:\Users\ASUS\Documents\Codex\2026-07-22\https-ai4scompetition-intern-ai-org-cn\work\QuantaForge\qa\artifacts\3838fea72a80\grover_cpu/grover_algorithm_result.txt
 
 stderr:
 

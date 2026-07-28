@@ -1,7 +1,7 @@
 case=08_qaoa_layers_oversize
-started_at=2026-07-28T10:36:37.708777+00:00
-finished_at=2026-07-28T10:36:37.708777+00:00
-elapsed_s=0.000176100
+started_at=2026-07-28T10:40:44.471296+00:00
+finished_at=2026-07-28T10:40:44.472330+00:00
+elapsed_s=0.000118100
 passed=True
 stdout:
 

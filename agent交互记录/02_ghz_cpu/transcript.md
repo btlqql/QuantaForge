@@ -4,9 +4,9 @@
 
 ## 元数据
 
-- 开始时间（UTC）：`2026-07-28T10:36:36.015537+00:00`
-- 结束时间（UTC）：`2026-07-28T10:36:36.169138+00:00`
-- 耗时：`0.153729s`
+- 开始时间（UTC）：`2026-07-28T10:40:42.778626+00:00`
+- 结束时间（UTC）：`2026-07-28T10:40:42.932745+00:00`
+- 耗时：`0.154205s`
 - 设备请求：`cpu`
 - 实测结论：`PASS`
 
@@ -32,7 +32,7 @@
     "seed": 42,
     "language": "zh",
     "original_prompt": "构建5个量子比特的GHZ态，使用CPU执行并验证概率",
-    "task_id": "a5b095e5e8ac"
+    "task_id": "88713ece7738"
   },
   "status": "success",
   "summary": "GHZ实验完成：5量子比特，解析验证通过。",
@@ -72,10 +72,12 @@
     "algorithm": "GHZ",
     "qubits": 5,
     "state_dimension": 32,
+    "probability_output_mode": "full",
+    "returned_probability_states": 32,
     "primary_device": "cpu",
     "device_runs": {
       "cpu": {
-        "runtime_s": 0.0012295999986235984,
+        "runtime_s": 0.0011312999995425344,
         "state_norm": 0.9999999403953552
       }
     }
@@ -160,13 +162,13 @@
     }
   },
   "artifacts": {
-    "circuit": "/artifacts/a5b095e5e8ac/quantum_circuit.svg",
-    "experiment_report": "/artifacts/a5b095e5e8ac/experiment_result.json"
+    "circuit": "/artifacts/88713ece7738/quantum_circuit.svg",
+    "experiment_report": "/artifacts/88713ece7738/experiment_result.json"
   },
   "warnings": [],
   "error": null,
-  "started_at": "2026-07-28T10:36:36.015537+00:00",
-  "finished_at": "2026-07-28T10:36:36.167049+00:00"
+  "started_at": "2026-07-28T10:40:42.779684+00:00",
+  "finished_at": "2026-07-28T10:40:42.930613+00:00"
 }
 ```
 

@@ -1,8 +1,8 @@
 {
   "suite": "QuantaForge reproducible QA",
   "environment": {
-    "timestamp_utc": "2026-07-28T10:36:35.434913+00:00",
-    "git_commit": "99551f151edf1ddbb2083337e50eda02270f187c",
+    "timestamp_utc": "2026-07-28T10:40:42.273884+00:00",
+    "git_commit": "d56c2f637f40b5ea2a08b5097f63d069b2267607",
     "python": "3.12.13 (main, Mar  3 2026, 15:01:35) [MSC v.1944 64 bit (AMD64)]",
     "platform": "Windows-11-10.0.26100-SP0",
     "seed": 42,
@@ -31,9 +31,9 @@
       "title": "Bell纠缠态CPU执行与解析验证",
       "prompt": "构建Bell纠缠态，使用CPU执行并验证结果",
       "device": "cpu",
-      "started_at": "2026-07-28T10:36:35.564889+00:00",
-      "finished_at": "2026-07-28T10:36:36.013484+00:00",
-      "elapsed_s": 0.44874390000040876,
+      "started_at": "2026-07-28T10:40:42.409490+00:00",
+      "finished_at": "2026-07-28T10:40:42.776556+00:00",
+      "elapsed_s": 0.3675712999975076,
       "passed": true,
       "checks": [
         "status: PASS",
@@ -53,7 +53,7 @@
           "seed": 42,
           "language": "zh",
           "original_prompt": "构建Bell纠缠态，使用CPU执行并验证结果",
-          "task_id": "b6d1e46a6350"
+          "task_id": "947b03cf76bc"
         },
         "status": "success",
         "summary": "Bell实验完成：2量子比特，解析验证通过。",
@@ -93,10 +93,12 @@
           "algorithm": "Bell",
           "qubits": 2,
           "state_dimension": 4,
+          "probability_output_mode": "full",
+          "returned_probability_states": 4,
           "primary_device": "cpu",
           "device_runs": {
             "cpu": {
-              "runtime_s": 0.04502340000180993,
+              "runtime_s": 0.007578600001579616,
               "state_norm": 0.9999999403953552
             }
           }
@@ -125,13 +127,13 @@
           }
         },
         "artifacts": {
-          "circuit": "/artifacts/b6d1e46a6350/quantum_circuit.svg",
-          "experiment_report": "/artifacts/b6d1e46a6350/experiment_result.json"
+          "circuit": "/artifacts/947b03cf76bc/quantum_circuit.svg",
+          "experiment_report": "/artifacts/947b03cf76bc/experiment_result.json"
         },
         "warnings": [],
         "error": null,
-        "started_at": "2026-07-28T10:36:35.571123+00:00",
-        "finished_at": "2026-07-28T10:36:36.010374+00:00"
+        "started_at": "2026-07-28T10:40:42.414696+00:00",
+        "finished_at": "2026-07-28T10:40:42.774381+00:00"
       }
     },
     {
@@ -139,9 +141,9 @@
       "title": "5比特GHZ态CPU执行与解析验证",
       "prompt": "构建5个量子比特的GHZ态，使用CPU执行并验证概率",
       "device": "cpu",
-      "started_at": "2026-07-28T10:36:36.015537+00:00",
-      "finished_at": "2026-07-28T10:36:36.169138+00:00",
-      "elapsed_s": 0.1537289000043529,
+      "started_at": "2026-07-28T10:40:42.778626+00:00",
+      "finished_at": "2026-07-28T10:40:42.932745+00:00",
+      "elapsed_s": 0.1542046000031405,
       "passed": true,
       "checks": [
         "status: PASS",
@@ -161,7 +163,7 @@
           "seed": 42,
           "language": "zh",
           "original_prompt": "构建5个量子比特的GHZ态，使用CPU执行并验证概率",
-          "task_id": "a5b095e5e8ac"
+          "task_id": "88713ece7738"
         },
         "status": "success",
         "summary": "GHZ实验完成：5量子比特，解析验证通过。",
@@ -201,10 +203,12 @@
           "algorithm": "GHZ",
           "qubits": 5,
           "state_dimension": 32,
+          "probability_output_mode": "full",
+          "returned_probability_states": 32,
           "primary_device": "cpu",
           "device_runs": {
             "cpu": {
-              "runtime_s": 0.0012295999986235984,
+              "runtime_s": 0.0011312999995425344,
               "state_norm": 0.9999999403953552
             }
           }
@@ -289,13 +293,13 @@
           }
         },
         "artifacts": {
-          "circuit": "/artifacts/a5b095e5e8ac/quantum_circuit.svg",
-          "experiment_report": "/artifacts/a5b095e5e8ac/experiment_result.json"
+          "circuit": "/artifacts/88713ece7738/quantum_circuit.svg",
+          "experiment_report": "/artifacts/88713ece7738/experiment_result.json"
         },
         "warnings": [],
         "error": null,
-        "started_at": "2026-07-28T10:36:36.015537+00:00",
-        "finished_at": "2026-07-28T10:36:36.167049+00:00"
+        "started_at": "2026-07-28T10:40:42.779684+00:00",
+        "finished_at": "2026-07-28T10:40:42.930613+00:00"
       }
     },
     {
@@ -303,9 +307,9 @@
       "title": "5比特Grover目标态搜索与理论验证",
       "prompt": "用5个量子比特运行Grover搜索，目标状态为10110，使用CPU执行并验证",
       "device": "cpu",
-      "started_at": "2026-07-28T10:36:36.171230+00:00",
-      "finished_at": "2026-07-28T10:36:37.027638+00:00",
-      "elapsed_s": 0.8567127999995137,
+      "started_at": "2026-07-28T10:40:42.936046+00:00",
+      "finished_at": "2026-07-28T10:40:43.795478+00:00",
+      "elapsed_s": 0.8594660000017029,
       "passed": true,
       "checks": [
         "status: PASS",
@@ -325,7 +329,7 @@
           "seed": 42,
           "language": "zh",
           "original_prompt": "用5个量子比特运行Grover搜索，目标状态为10110，使用CPU执行并验证",
-          "task_id": "932dcf086c94"
+          "task_id": "3838fea72a80"
         },
         "status": "success",
         "summary": "Grover搜索完成：找到状态10110，目标态概率0.999181，理论验证通过。",
@@ -369,7 +373,7 @@
           "primary_device": "cpu",
           "device_runs": {
             "cpu": {
-              "runtime_s": 0.8445314999989932,
+              "runtime_s": 0.8478475000010803,
               "status": "ok",
               "found_state": "10110",
               "backend_bit_order_state": "01101",
@@ -520,14 +524,14 @@
           "tolerance": 1e-05
         },
         "artifacts": {
-          "cpu_grover_algorithm_circuit": "/artifacts/932dcf086c94/grover_cpu/grover_algorithm_circuit.svg",
-          "cpu_grover_algorithm_result": "/artifacts/932dcf086c94/grover_cpu/grover_algorithm_result.txt",
-          "experiment_report": "/artifacts/932dcf086c94/experiment_result.json"
+          "cpu_grover_algorithm_circuit": "/artifacts/3838fea72a80/grover_cpu/grover_algorithm_circuit.svg",
+          "cpu_grover_algorithm_result": "/artifacts/3838fea72a80/grover_cpu/grover_algorithm_result.txt",
+          "experiment_report": "/artifacts/3838fea72a80/experiment_result.json"
         },
         "warnings": [],
         "error": null,
-        "started_at": "2026-07-28T10:36:36.172294+00:00",
-        "finished_at": "2026-07-28T10:36:37.025534+00:00"
+        "started_at": "2026-07-28T10:40:42.937105+00:00",
+        "finished_at": "2026-07-28T10:40:43.792270+00:00"
       }
     },
     {
@@ -535,9 +539,9 @@
       "title": "4比特QAOA MaxCut与经典最优值验证",
       "prompt": "用4个量子比特运行QAOA MaxCut，层数2，优化30轮，使用CPU",
       "device": "cpu",
-      "started_at": "2026-07-28T10:36:37.030781+00:00",
-      "finished_at": "2026-07-28T10:36:37.698782+00:00",
-      "elapsed_s": 0.6684543999945163,
+      "started_at": "2026-07-28T10:40:43.799024+00:00",
+      "finished_at": "2026-07-28T10:40:44.460751+00:00",
+      "elapsed_s": 0.6622698000064702,
       "passed": true,
       "checks": [
         "status: PASS",
@@ -574,7 +578,7 @@
           "seed": 42,
           "language": "zh",
           "original_prompt": "用4个量子比特运行QAOA MaxCut，层数2，优化30轮，使用CPU",
-          "task_id": "402e419541cf"
+          "task_id": "37077cc8bad7"
         },
         "status": "success",
         "summary": "QAOA完成：解0101的割值为4，经典最优值为4，近似比1.000。",
@@ -636,12 +640,12 @@
           "primary_device": "cpu",
           "device_runs": {
             "cpu": {
-              "runtime_s": 0.6560745000024326,
+              "runtime_s": 0.6539467000038712,
               "status": "ok",
               "optimal_bitstring": "0101",
               "maxcut_value": 4,
               "optimized_energy": -3.796683180297726,
-              "quantum_computation_time_s": 0.19990253448486328
+              "quantum_computation_time_s": 0.17906999588012695
             }
           }
         },
@@ -661,15 +665,15 @@
           ]
         },
         "artifacts": {
-          "cpu_maxcut_solution": "/artifacts/402e419541cf/qaoa_cpu/MaxCut_Solution.svg",
-          "cpu_qaoa_circuit": "/artifacts/402e419541cf/qaoa_cpu/QAOA_Circuit.svg",
-          "cpu_qaoa_convergence": "/artifacts/402e419541cf/qaoa_cpu/QAOA_Convergence.svg",
-          "experiment_report": "/artifacts/402e419541cf/experiment_result.json"
+          "cpu_maxcut_solution": "/artifacts/37077cc8bad7/qaoa_cpu/MaxCut_Solution.svg",
+          "cpu_qaoa_circuit": "/artifacts/37077cc8bad7/qaoa_cpu/QAOA_Circuit.svg",
+          "cpu_qaoa_convergence": "/artifacts/37077cc8bad7/qaoa_cpu/QAOA_Convergence.svg",
+          "experiment_report": "/artifacts/37077cc8bad7/experiment_result.json"
         },
         "warnings": [],
         "error": null,
-        "started_at": "2026-07-28T10:36:37.031889+00:00",
-        "finished_at": "2026-07-28T10:36:37.696684+00:00"
+        "started_at": "2026-07-28T10:40:43.800108+00:00",
+        "finished_at": "2026-07-28T10:40:44.458587+00:00"
       }
     },
     {
@@ -677,9 +681,9 @@
       "title": "GHZ超规模请求结构化拒绝",
       "prompt": "用27个量子比特构建GHZ态并使用GPU执行",
       "device": "gpu",
-      "started_at": "2026-07-28T10:36:37.700945+00:00",
-      "finished_at": "2026-07-28T10:36:37.700945+00:00",
-      "elapsed_s": 0.00013330000365385786,
+      "started_at": "2026-07-28T10:40:44.463944+00:00",
+      "finished_at": "2026-07-28T10:40:44.464975+00:00",
+      "elapsed_s": 0.00012880000576842576,
       "passed": true,
       "checks": [
         "status: PASS",
@@ -690,7 +694,7 @@
       ],
       "response": {
         "status": "failed",
-        "task_id": "0be1abd6ffab",
+        "task_id": "398d454a371e",
         "summary": "请求未执行：请求的GHZ量子比特数为27，超出当前允许范围3至26。",
         "plan": [],
         "metrics": {},
@@ -719,7 +723,7 @@
             "max": 26
           },
           "details": {
-            "task_id": "0be1abd6ffab"
+            "task_id": "398d454a371e"
           }
         }
       }
@@ -729,9 +733,9 @@
       "title": "Grover超规模请求结构化拒绝",
       "prompt": "用13个量子比特运行Grover搜索，目标状态为1111111111111，使用GPU",
       "device": "gpu",
-      "started_at": "2026-07-28T10:36:37.703044+00:00",
-      "finished_at": "2026-07-28T10:36:37.703044+00:00",
-      "elapsed_s": 0.00011079999967478216,
+      "started_at": "2026-07-28T10:40:44.467049+00:00",
+      "finished_at": "2026-07-28T10:40:44.467049+00:00",
+      "elapsed_s": 0.00012799999967683107,
       "passed": true,
       "checks": [
         "status: PASS",
@@ -742,7 +746,7 @@
       ],
       "response": {
         "status": "failed",
-        "task_id": "07382d3d0690",
+        "task_id": "058c5da23a91",
         "summary": "请求未执行：请求的GROVER数据量子比特数为13，超出当前允许范围2至12。",
         "plan": [],
         "metrics": {},
@@ -771,7 +775,7 @@
             "max": 12
           },
           "details": {
-            "task_id": "07382d3d0690"
+            "task_id": "058c5da23a91"
           }
         }
       }
@@ -781,9 +785,9 @@
       "title": "QAOA超规模请求结构化拒绝",
       "prompt": "用12个量子比特运行QAOA MaxCut，层数2，优化30轮，使用GPU",
       "device": "gpu",
-      "started_at": "2026-07-28T10:36:37.705118+00:00",
-      "finished_at": "2026-07-28T10:36:37.705118+00:00",
-      "elapsed_s": 0.0002870999960578047,
+      "started_at": "2026-07-28T10:40:44.469104+00:00",
+      "finished_at": "2026-07-28T10:40:44.469104+00:00",
+      "elapsed_s": 0.00013169999874662608,
       "passed": true,
       "checks": [
         "status: PASS",
@@ -794,7 +798,7 @@
       ],
       "response": {
         "status": "failed",
-        "task_id": "dbfc83de8d03",
+        "task_id": "022832b343bd",
         "summary": "请求未执行：请求的QAOA量子比特数为12，超出当前允许范围2至10。",
         "plan": [],
         "metrics": {},
@@ -823,7 +827,7 @@
             "max": 10
           },
           "details": {
-            "task_id": "dbfc83de8d03"
+            "task_id": "022832b343bd"
           }
         }
       }
@@ -833,9 +837,9 @@
       "title": "QAOA线路层数越界结构化拒绝",
       "prompt": "用4个量子比特运行QAOA MaxCut，层数8，优化30轮，使用CPU",
       "device": "cpu",
-      "started_at": "2026-07-28T10:36:37.708777+00:00",
-      "finished_at": "2026-07-28T10:36:37.708777+00:00",
-      "elapsed_s": 0.00017610000213608146,
+      "started_at": "2026-07-28T10:40:44.471296+00:00",
+      "finished_at": "2026-07-28T10:40:44.472330+00:00",
+      "elapsed_s": 0.00011810000432888046,
       "passed": true,
       "checks": [
         "status: PASS",
@@ -846,7 +850,7 @@
       ],
       "response": {
         "status": "failed",
-        "task_id": "ea8877c64139",
+        "task_id": "bd91e5bee487",
         "summary": "请求未执行：请求的QAOA线路层数为8，超出当前允许范围1至6。",
         "plan": [],
         "metrics": {},
@@ -875,7 +879,7 @@
             "max": 6
           },
           "details": {
-            "task_id": "ea8877c64139"
+            "task_id": "bd91e5bee487"
           }
         }
       }
@@ -885,9 +889,9 @@
       "title": "不支持算法请求结构化拒绝",
       "prompt": "请运行Shor算法分解15，使用CPU",
       "device": "cpu",
-      "started_at": "2026-07-28T10:36:37.710935+00:00",
-      "finished_at": "2026-07-28T10:36:37.710935+00:00",
-      "elapsed_s": 5.0900001951958984e-05,
+      "started_at": "2026-07-28T10:40:44.473378+00:00",
+      "finished_at": "2026-07-28T10:40:44.473378+00:00",
+      "elapsed_s": 6.240000220714137e-05,
       "passed": true,
       "checks": [
         "status: PASS",

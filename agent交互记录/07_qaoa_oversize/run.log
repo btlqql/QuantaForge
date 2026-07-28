@@ -1,7 +1,7 @@
 case=07_qaoa_oversize
-started_at=2026-07-28T10:36:37.705118+00:00
-finished_at=2026-07-28T10:36:37.705118+00:00
-elapsed_s=0.000287100
+started_at=2026-07-28T10:40:44.469104+00:00
+finished_at=2026-07-28T10:40:44.469104+00:00
+elapsed_s=0.000131700
 passed=True
 stdout:
 

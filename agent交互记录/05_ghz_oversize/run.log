@@ -1,7 +1,7 @@
 case=05_ghz_oversize
-started_at=2026-07-28T10:36:37.700945+00:00
-finished_at=2026-07-28T10:36:37.700945+00:00
-elapsed_s=0.000133300
+started_at=2026-07-28T10:40:44.463944+00:00
+finished_at=2026-07-28T10:40:44.464975+00:00
+elapsed_s=0.000128800
 passed=True
 stdout:
 

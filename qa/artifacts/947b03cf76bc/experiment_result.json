@@ -1,7 +1,7 @@
 {
   "spec": {
-    "algorithm": "ghz",
-    "qubits": 5,
+    "algorithm": "bell",
+    "qubits": 2,
     "device": "cpu",
     "target": null,
     "shots": 1024,
@@ -10,16 +10,16 @@
     "edges": [],
     "seed": 42,
     "language": "zh",
-    "original_prompt": "构建5个量子比特的GHZ态，使用CPU执行并验证概率",
-    "task_id": "a5b095e5e8ac"
+    "original_prompt": "构建Bell纠缠态，使用CPU执行并验证结果",
+    "task_id": "947b03cf76bc"
   },
   "status": "success",
-  "summary": "GHZ实验完成：5量子比特，解析验证通过。",
+  "summary": "Bell实验完成：2量子比特，解析验证通过。",
   "plan": [
     {
       "id": "understand",
       "title": "理解任务",
-      "detail": "识别为GHZ多比特纠缠态，量子比特数5。"
+      "detail": "识别为Bell纠缠态，量子比特数2。"
     },
     {
       "id": "validate",
@@ -39,7 +39,7 @@
     {
       "id": "verify",
       "title": "独立验证",
-      "detail": "检查全零态和全一态概率各为0.5"
+      "detail": "与解析概率[0.5, 0, 0, 0.5]比较"
     },
     {
       "id": "report",
@@ -48,13 +48,15 @@
     }
   ],
   "metrics": {
-    "algorithm": "GHZ",
-    "qubits": 5,
-    "state_dimension": 32,
+    "algorithm": "Bell",
+    "qubits": 2,
+    "state_dimension": 4,
+    "probability_output_mode": "full",
+    "returned_probability_states": 4,
     "primary_device": "cpu",
     "device_runs": {
       "cpu": {
-        "runtime_s": 0.0012295999986235984,
+        "runtime_s": 0.007578600001579616,
         "state_norm": 0.9999999403953552
       }
     }
@@ -63,69 +65,13 @@
     0.4999999701976776,
     0.0,
     0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
     0.4999999701976776
   ],
   "labels": [
-    "00000",
-    "00001",
-    "00010",
-    "00011",
-    "00100",
-    "00101",
-    "00110",
-    "00111",
-    "01000",
-    "01001",
-    "01010",
-    "01011",
-    "01100",
-    "01101",
-    "01110",
-    "01111",
-    "10000",
-    "10001",
-    "10010",
-    "10011",
-    "10100",
-    "10101",
-    "10110",
-    "10111",
-    "11000",
-    "11001",
-    "11010",
-    "11011",
-    "11100",
-    "11101",
-    "11110",
-    "11111"
+    "00",
+    "01",
+    "10",
+    "11"
   ],
   "verification": {
     "method": "analytic_state_probability",
@@ -134,16 +80,16 @@
     "probability_sum_error": 5.960464477539063e-08,
     "tolerance": 1e-05,
     "expected_nonzero_states": {
-      "00000": 0.5,
-      "11111": 0.5
+      "00": 0.5,
+      "11": 0.5
     }
   },
   "artifacts": {
-    "circuit": "/artifacts/a5b095e5e8ac/quantum_circuit.svg",
-    "experiment_report": "/artifacts/a5b095e5e8ac/experiment_result.json"
+    "circuit": "/artifacts/947b03cf76bc/quantum_circuit.svg",
+    "experiment_report": "/artifacts/947b03cf76bc/experiment_result.json"
   },
   "warnings": [],
   "error": null,
-  "started_at": "2026-07-28T10:36:36.015537+00:00",
-  "finished_at": "2026-07-28T10:36:36.167049+00:00"
+  "started_at": "2026-07-28T10:40:42.414696+00:00",
+  "finished_at": "2026-07-28T10:40:42.774381+00:00"
 }

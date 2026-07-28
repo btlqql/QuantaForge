@@ -1,7 +1,7 @@
 case=09_unsupported_algorithm
-started_at=2026-07-28T10:36:37.710935+00:00
-finished_at=2026-07-28T10:36:37.710935+00:00
-elapsed_s=0.000050900
+started_at=2026-07-28T10:40:44.473378+00:00
+finished_at=2026-07-28T10:40:44.473378+00:00
+elapsed_s=0.000062400
 passed=True
 stdout:
 
