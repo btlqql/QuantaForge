@@ -12,7 +12,8 @@
 6. `docs/architecture.md`、`docs/agent_workflow.md`：架构与 Agent 闭环。
 7. `reports/generated/correctness_report.md`：四类算法实测摘要。
 8. `docs/validation_report.md`、`docs/performance_analysis.md`：验证与性能解释。
-9. `presentation/QuantaForge_competition_deck.pptx`：8 页答辩材料。
+9. `reports/generated/capability_sync/`：26比特Web Agent真实GPU成功与27比特结构化拒绝原始证据。
+10. `presentation/QuantaForge_competition_deck.pptx`：8 页答辩材料。
 
 ## 最终验收状态
 
@@ -21,6 +22,7 @@
 - 原始Agent交互：9段，每段含请求、完整响应、运行日志和自动核验。
 - 赛事 GPU 完整正确性套件：4 / 4 通过。
 - Bell、GHZ、Grover CPU/GPU 关键结果差：0。
+- 26比特GHZ Web Agent端到端GPU实测通过；27比特请求在执行前以HTTP 422结构化拒绝。
 - QAOA 4 节点环图：割值 4，经典精确最优值 4，近似比 1.0。
 - 提交结构检查：必需文件齐全，8段开发摘要和9段原始Agent交互均可定位，敏感标记扫描通过。
 - PPT：8 页，自动溢出检测通过并完成逐页视觉检查。

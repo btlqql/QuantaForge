@@ -139,6 +139,7 @@ python3 scripts/benchmark.py --sizes 8,12,16,20,22,24,25,26 --warmups 2 --repeat
 - Web新进程GPU预热约2.908秒，解析最大误差2.980e-08。
 - 24比特压力测试的最佳GPU/CPU加速比为0.604。
 - 26比特GPU稳定态中位耗时7.519秒，P95为7.777秒。
+- 26比特Web Agent端到端补测GPU执行7.940秒，完整67,108,864维状态验证PASS，响应仅返回两个非零态。
 - 所有压力测试的CPU/GPU完整状态最大差异均为0。
 
 加速比小于1表示GPU慢于CPU，不得描述为GPU加速。当前优化成果是消除首请求冷启动、扩展压力测试规模和增强统计可复核性。原始证据位于`reports/generated/performance/benchmark.json`、`benchmark.csv`、`performance_report.md`和`reports/generated/web_warmup_test.log`。

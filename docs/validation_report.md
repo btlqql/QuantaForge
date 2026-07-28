@@ -34,6 +34,10 @@
 - 错误对象包含`code`、`type`、`http_status`、`message`、`field`、`requested`、`allowed`、恢复/重试标志和修改建议。
 - Web越界请求实测返回HTTP 422，`verification.executed=false`，证明拒绝发生在后端执行前。
 - `python3 qa/run_reproducible_qa.py`生成9段原始Agent问答和`qa/results`中的机器可读报告，任一不匹配时以非零状态退出。
+
+## 26比特Web端到端补充实测
+
+在提交版本`6ca7dd9`上，通过Web API实际请求26比特GHZ壁仞GPU任务：完整状态维度67,108,864，GPU执行7.940秒，解析最大误差2.980e-08，验证PASS；响应以`sparse_nonzero`模式仅返回两个非零态。随后请求27比特，接口返回HTTP 422、`CAPABILITY_LIMIT_EXCEEDED`、允许范围3至26且`verification.executed=false`。原始证据见`reports/generated/capability_sync/`。
 - 原始证据位于根目录`agent交互记录.md`和`agent交互记录/`，每段含`request.json`、`response.json`、`run.log`和`transcript.md`。
 
 ## 已修复的真实兼容性问题

@@ -1,0 +1,93 @@
+{
+  "spec": {
+    "algorithm": "ghz",
+    "qubits": 26,
+    "device": "gpu",
+    "target": null,
+    "shots": 1024,
+    "layers": 2,
+    "max_iter": 30,
+    "edges": [],
+    "seed": 42,
+    "language": "zh",
+    "original_prompt": "用26个量子比特构建GHZ态，使用壁仞GPU运行并验证",
+    "task_id": "7bb11c23ce28"
+  },
+  "status": "success",
+  "summary": "GHZ实验完成：26量子比特，解析验证通过。",
+  "plan": [
+    {
+      "id": "understand",
+      "title": "理解任务",
+      "detail": "识别为GHZ多比特纠缠态，量子比特数26。"
+    },
+    {
+      "id": "validate",
+      "title": "检查参数",
+      "detail": "验证规模、二进制目标、图结构和运行预算，拒绝越界任务。"
+    },
+    {
+      "id": "construct",
+      "title": "构建量子实验",
+      "detail": "生成确定性的量子线路、算法参数与可复现配置。"
+    },
+    {
+      "id": "execute",
+      "title": "执行模拟",
+      "detail": "在GPU后端运行UnitaryLab量子模拟。"
+    },
+    {
+      "id": "verify",
+      "title": "独立验证",
+      "detail": "检查全零态和全一态概率各为0.5"
+    },
+    {
+      "id": "report",
+      "title": "生成报告",
+      "detail": "输出概率、误差、运行指标、能力边界和一键复现命令。"
+    }
+  ],
+  "metrics": {
+    "algorithm": "GHZ",
+    "qubits": 26,
+    "state_dimension": 67108864,
+    "probability_output_mode": "sparse_nonzero",
+    "returned_probability_states": 2,
+    "primary_device": "gpu",
+    "device_runs": {
+      "gpu": {
+        "runtime_s": 7.939913841895759,
+        "state_norm": 0.9999999403953552
+      }
+    }
+  },
+  "probabilities": [
+    0.4999999701976776,
+    0.4999999701976776
+  ],
+  "labels": [
+    "00000000000000000000000000",
+    "11111111111111111111111111"
+  ],
+  "verification": {
+    "method": "analytic_state_probability",
+    "passed": true,
+    "max_abs_diff": 2.9802322387695312e-08,
+    "probability_sum_error": 5.960464477539063e-08,
+    "tolerance": 1e-05,
+    "expected_nonzero_states": {
+      "00000000000000000000000000": 0.5,
+      "11111111111111111111111111": 0.5
+    }
+  },
+  "artifacts": {
+    "circuit": "/artifacts/7bb11c23ce28/quantum_circuit.svg",
+    "experiment_report": "/artifacts/7bb11c23ce28/experiment_result.json"
+  },
+  "warnings": [
+    "完整67108864维概率向量已参与正确性验证；Web响应仅返回GHZ的两个非零态。"
+  ],
+  "error": null,
+  "started_at": "2026-07-28T10:43:30.232351+00:00",
+  "finished_at": "2026-07-28T10:43:39.087737+00:00"
+}

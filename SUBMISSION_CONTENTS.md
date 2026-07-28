@@ -14,7 +14,7 @@
 | 完整依赖说明与编译/运行命令 | `02_依赖说明与运行命令/` | `README.md`、`requirements.txt`、`pyproject.toml`、启动脚本与说明文档 |
 | 正确性验证脚本与验证结果 | `03_正确性验证脚本与结果/` | `validate_correctness.py`、单元测试、正确性 JSON 与 Markdown 报告 |
 | 性能测试脚本与性能报告 | `04_性能测试脚本与报告/` | `benchmark.py`、CSV/JSON 原始数据、性能报告与 GPU 状态 |
-| 运行日志或截图 | `05_运行日志与结果证据/` | GPU 环境记录、实验 JSON/TXT、Web 实测结果、量子线路和 QAOA SVG 图 |
+| 运行日志或截图 | `05_运行日志与结果证据/` | GPU 环境记录、实验 JSON/TXT、26比特Web Agent实测、结构化错误响应、量子线路和 QAOA SVG 图 |
 | 原始Agent交互记录 | 压缩包根目录 `agent交互记录.md` 和 `agent交互记录/` | 9段实际调用Agent生成的原始请求、完整响应、日志和自动核验，供官方第一时间审查 |
 | 可复现QA实测 | 压缩包根目录 `qa/` | 一键QA脚本、9个案例、JSON/Markdown结果和运行日志，当前9/9通过 |
 | Agent/Skill 开发日志 | `06_Agent_Skill开发日志_8段/` | 8段开发过程摘要；与上述原始Agent交互证据分开 |
