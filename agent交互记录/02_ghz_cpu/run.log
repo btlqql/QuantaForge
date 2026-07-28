@@ -1,7 +1,7 @@
 case=02_ghz_cpu
-started_at=2026-07-28T09:14:46.067035+00:00
-finished_at=2026-07-28T09:14:46.311126+00:00
-elapsed_s=0.244205000
+started_at=2026-07-28T09:16:07.488895+00:00
+finished_at=2026-07-28T09:16:07.646427+00:00
+elapsed_s=0.157143400
 passed=True
 stdout:
 

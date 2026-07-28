@@ -1,6 +1,6 @@
 {
   "status": "failed",
-  "task_id": "dd73a4fd812f",
+  "task_id": "a7a8048d78e3",
   "summary": "请求未执行：请求的GHZ量子比特数为25，超出当前允许范围3至20。",
   "plan": [],
   "metrics": {},
@@ -29,7 +29,7 @@
       "max": 20
     },
     "details": {
-      "task_id": "dd73a4fd812f"
+      "task_id": "a7a8048d78e3"
     }
   }
 }

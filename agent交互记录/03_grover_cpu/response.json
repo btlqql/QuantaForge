@@ -11,7 +11,7 @@
     "seed": 42,
     "language": "zh",
     "original_prompt": "用5个量子比特运行Grover搜索，目标状态为10110，使用CPU执行并验证",
-    "task_id": "321b134cffd0"
+    "task_id": "cebc7b1f5877"
   },
   "status": "success",
   "summary": "Grover搜索完成：找到状态10110，目标态概率0.999181，理论验证通过。",
@@ -55,7 +55,7 @@
     "primary_device": "cpu",
     "device_runs": {
       "cpu": {
-        "runtime_s": 0.8361517999983334,
+        "runtime_s": 0.8484094999985246,
         "status": "ok",
         "found_state": "10110",
         "backend_bit_order_state": "01101",
@@ -206,12 +206,12 @@
     "tolerance": 1e-05
   },
   "artifacts": {
-    "cpu_grover_algorithm_circuit": "/artifacts/321b134cffd0/grover_cpu/grover_algorithm_circuit.svg",
-    "cpu_grover_algorithm_result": "/artifacts/321b134cffd0/grover_cpu/grover_algorithm_result.txt",
-    "experiment_report": "/artifacts/321b134cffd0/experiment_result.json"
+    "cpu_grover_algorithm_circuit": "/artifacts/cebc7b1f5877/grover_cpu/grover_algorithm_circuit.svg",
+    "cpu_grover_algorithm_result": "/artifacts/cebc7b1f5877/grover_cpu/grover_algorithm_result.txt",
+    "experiment_report": "/artifacts/cebc7b1f5877/experiment_result.json"
   },
   "warnings": [],
   "error": null,
-  "started_at": "2026-07-28T09:14:46.315283+00:00",
-  "finished_at": "2026-07-28T09:14:47.158685+00:00"
+  "started_at": "2026-07-28T09:16:07.649598+00:00",
+  "finished_at": "2026-07-28T09:16:08.505451+00:00"
 }
