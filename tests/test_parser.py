@@ -1,5 +1,6 @@
 import unittest
 
+from quantaforge.errors import QuantaForgeError
 from quantaforge.parser import parse_experiment
 
 
@@ -17,14 +18,13 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(spec.edges, [(0, 1), (0, 3), (1, 2), (2, 3)])
 
     def test_rejects_invalid_grover_target(self):
-        with self.assertRaisesRegex(ValueError, "二进制串"):
+        with self.assertRaisesRegex(QuantaForgeError, "二进制串"):
             parse_experiment("用5个量子比特运行Grover，目标状态为101")
 
     def test_rejects_unknown_algorithm(self):
-        with self.assertRaisesRegex(ValueError, "暂未识别"):
+        with self.assertRaisesRegex(QuantaForgeError, "暂未识别"):
             parse_experiment("帮我做一个量子实验")
 
 
 if __name__ == "__main__":
     unittest.main()
-

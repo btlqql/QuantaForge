@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 
+from .errors import QuantaForgeError
 from .models import ExperimentSpec, default_edges
 
 
@@ -16,7 +17,17 @@ ALGORITHM_PATTERNS: list[tuple[str, tuple[str, ...]]] = [
 def parse_experiment(prompt: str, *, default_device: str = "gpu") -> ExperimentSpec:
     normalized = " ".join(prompt.strip().lower().split())
     if not normalized:
-        raise ValueError("请输入量子实验需求。")
+        raise QuantaForgeError(
+            code="EMPTY_PROMPT",
+            error_type="input_error",
+            message="请输入量子实验需求。",
+            field="prompt",
+            requested="",
+            allowed={"non_empty": True},
+            recoverable=True,
+            suggestions=["明确选择Bell、GHZ、Grover或QAOA MaxCut实验"],
+            http_status=400,
+        )
 
     algorithm = _detect_algorithm(normalized)
     qubits = _extract_int(
@@ -72,7 +83,17 @@ def _detect_algorithm(prompt: str) -> str:
     for algorithm, keywords in ALGORITHM_PATTERNS:
         if any(keyword in prompt for keyword in keywords):
             return algorithm
-    raise ValueError("暂未识别算法。请明确选择Bell、GHZ、Grover或QAOA MaxCut实验。")
+    raise QuantaForgeError(
+        code="UNSUPPORTED_ALGORITHM",
+        error_type="input_error",
+        message="暂未识别算法。请明确选择Bell、GHZ、Grover或QAOA MaxCut实验。",
+        field="algorithm",
+        requested=prompt,
+        allowed=["bell", "ghz", "grover", "qaoa"],
+        recoverable=True,
+        suggestions=["在问题中明确写出算法名称"],
+        http_status=400,
+    )
 
 
 def _detect_device(prompt: str, default: str) -> str:
@@ -103,4 +124,3 @@ def _extract_edges(prompt: str) -> list[tuple[int, int]]:
     for u, v in re.findall(r"\(?\s*(\d+)\s*[-—,]\s*(\d+)\s*\)?", section.group(1)):
         edges.append(tuple(sorted((int(u), int(v)))))
     return sorted(set(edges))
-

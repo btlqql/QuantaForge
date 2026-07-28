@@ -1,0 +1,35 @@
+{
+  "status": "failed",
+  "task_id": "63a39a03ace5",
+  "summary": "请求未执行：请求的GROVER数据量子比特数为13，超出当前允许范围2至12。",
+  "plan": [],
+  "metrics": {},
+  "verification": {
+    "passed": false,
+    "executed": false
+  },
+  "artifacts": {},
+  "warnings": [],
+  "error": {
+    "code": "CAPABILITY_LIMIT_EXCEEDED",
+    "type": "validation_error",
+    "message": "请求的GROVER数据量子比特数为13，超出当前允许范围2至12。",
+    "http_status": 422,
+    "recoverable": true,
+    "retryable": false,
+    "suggestions": [
+      "将数据量子比特数调整到2至12",
+      "修改请求后重新提交，当前请求未启动量子执行"
+    ],
+    "field": "qubits",
+    "algorithm": "grover",
+    "requested": 13,
+    "allowed": {
+      "min": 2,
+      "max": 12
+    },
+    "details": {
+      "task_id": "63a39a03ace5"
+    }
+  }
+}

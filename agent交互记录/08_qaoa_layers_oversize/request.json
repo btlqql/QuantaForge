@@ -1,0 +1,4 @@
+{
+  "prompt": "用4个量子比特运行QAOA MaxCut，层数8，优化30轮，使用CPU",
+  "device": "cpu"
+}

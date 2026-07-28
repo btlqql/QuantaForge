@@ -1,0 +1,29 @@
+case=04_qaoa_cpu
+started_at=2026-07-28T09:14:47.162959+00:00
+finished_at=2026-07-28T09:14:47.782048+00:00
+elapsed_s=0.618706400
+passed=True
+stdout:
+[QAOA]: Starting QAOA Algorithm
+[QAOA]: Input parameters: 
+        - Max-Cut Edges = 4
+        - Number of qubits = 4
+        - Number of layers = 2
+        - Max Iterations = 30
+[QAOA]: Stage 1: Initializing Hamiltonian matrix and parameter space
+[QAOA]: Stage 2: Mapping quantum circuit evolution architecture
+[QAOA]: Stage 3: Variational parameter optimization (COBYLA)
+[QAOA]:   Core quantum computation time: 0.1657 seconds
+[QAOA]:   Final optimized energy: -3.796683
+[QAOA]: Stage 4: Optimal state measurement and bitstring decoding
+[QAOA]: Stage 5: Exporting analysis plots
+[QAOA]: Output information: 
+        - Optimal bitstring = 0101
+        - Max-Cut Value = 4
+        - Optimized Energy = -3.796683180297726
+        - Quantum Computation Time = 0.16574907302856445
+[QAOA]:     Circuit diagram saved to: C:\Users\ASUS\Documents\Codex\2026-07-22\https-ai4scompetition-intern-ai-org-cn\work\QuantaForge\qa\artifacts\5c7363bf4286\qaoa_cpu\QAOA_Circuit.svg
+[QAOA]:     Convergence plot saved to: ['C:\\Users\\ASUS\\Documents\\Codex\\2026-07-22\\https-ai4scompetition-intern-ai-org-cn\\work\\QuantaForge\\qa\\artifacts\\5c7363bf4286\\qaoa_cpu\\QAOA_Convergence.svg', 'C:\\Users\\ASUS\\Documents\\Codex\\2026-07-22\\https-ai4scompetition-intern-ai-org-cn\\work\\QuantaForge\\qa\\artifacts\\5c7363bf4286\\qaoa_cpu\\MaxCut_Solution.svg']
+
+stderr:
+

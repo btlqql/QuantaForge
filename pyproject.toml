@@ -13,7 +13,7 @@ dependencies = [
   "matplotlib>=3.7",
   "networkx>=3.0",
   "unitarylab==1.0.0",
-  "unitarylab-algorithms>=1.1.0,<2",
+  "unitarylab-algorithms==1.1.0",
 ]
 
 [project.scripts]
@@ -26,4 +26,3 @@ where = ["src"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
-

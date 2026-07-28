@@ -1,0 +1,4 @@
+{
+  "prompt": "构建Bell纠缠态，使用CPU执行并验证结果",
+  "device": "cpu"
+}

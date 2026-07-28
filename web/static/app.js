@@ -29,7 +29,14 @@ async function request(path) {
     body: JSON.stringify({ prompt: els.prompt.value, device: els.device.value }),
   });
   const payload = await response.json();
-  if (!response.ok) throw new Error(payload.error || "请求失败");
+  if (!response.ok) {
+    const detail = payload.error || {};
+    const allowed = detail.allowed ? `\n允许范围：${JSON.stringify(detail.allowed)}` : "";
+    const suggestions = (detail.suggestions || []).length ? `\n建议：${detail.suggestions.join("；")}` : "";
+    const error = new Error(`[${detail.code || "REQUEST_FAILED"}] ${detail.message || "请求失败"}${allowed}${suggestions}`);
+    error.payload = payload;
+    throw error;
+  }
   return payload;
 }
 
@@ -134,4 +141,3 @@ fetch("/api/examples").then(response => response.json()).then(payload => {
   els.examples.querySelectorAll(".example").forEach(button => button.addEventListener("click", () => { els.prompt.value = button.dataset.prompt; }));
   els.prompt.value = payload.examples[1];
 });
-

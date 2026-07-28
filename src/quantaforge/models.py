@@ -6,6 +6,8 @@ from pathlib import Path
 from typing import Any, Literal
 from uuid import uuid4
 
+from .errors import capability_limit_error, invalid_parameter_error
+
 
 Algorithm = Literal["bell", "ghz", "grover", "qaoa"]
 Device = Literal["cpu", "gpu", "both"]
@@ -28,30 +30,104 @@ class ExperimentSpec:
 
     def validate(self) -> None:
         if self.algorithm == "bell":
-            self.qubits = 2
+            if self.qubits != 2:
+                raise invalid_parameter_error(
+                    code="FIXED_SIZE_REQUIRED",
+                    message=f"Bell纠缠对固定使用2个量子比特，收到{self.qubits}。",
+                    field_name="qubits",
+                    algorithm="bell",
+                    requested=self.qubits,
+                    allowed={"exact": 2},
+                    suggestions=["将量子比特数改为2", "如需多比特纠缠态，请选择GHZ实验"],
+                    task_id=self.task_id,
+                )
         if self.algorithm == "ghz" and not 3 <= self.qubits <= 20:
-            raise ValueError("GHZ实验支持3到20个量子比特。")
+            raise capability_limit_error(
+                algorithm="ghz",
+                field_name="qubits",
+                requested=self.qubits,
+                minimum=3,
+                maximum=20,
+                label="量子比特数",
+                task_id=self.task_id,
+            )
         if self.algorithm == "grover":
             if not 2 <= self.qubits <= 12:
-                raise ValueError("Grover实验支持2到12个数据量子比特。")
+                raise capability_limit_error(
+                    algorithm="grover",
+                    field_name="qubits",
+                    requested=self.qubits,
+                    minimum=2,
+                    maximum=12,
+                    label="数据量子比特数",
+                    task_id=self.task_id,
+                )
             if self.target is None:
                 self.target = "1" * self.qubits
             if len(self.target) != self.qubits or set(self.target) - {"0", "1"}:
-                raise ValueError("Grover目标状态必须是与量子比特数相同长度的二进制串。")
+                raise invalid_parameter_error(
+                    code="INVALID_TARGET_STATE",
+                    message="Grover目标状态必须是与数据量子比特数等长的二进制串。",
+                    field_name="target",
+                    algorithm="grover",
+                    requested=self.target,
+                    allowed={"binary_length": self.qubits},
+                    suggestions=[f"提供长度为{self.qubits}且仅含0和1的目标状态"],
+                    task_id=self.task_id,
+                )
         if self.algorithm == "qaoa":
             if not 2 <= self.qubits <= 10:
-                raise ValueError("QAOA演示支持2到10个量子比特。")
+                raise capability_limit_error(
+                    algorithm="qaoa",
+                    field_name="qubits",
+                    requested=self.qubits,
+                    minimum=2,
+                    maximum=10,
+                    label="量子比特数",
+                    task_id=self.task_id,
+                )
             if not 1 <= self.layers <= 6:
-                raise ValueError("QAOA层数必须在1到6之间。")
+                raise capability_limit_error(
+                    algorithm="qaoa",
+                    field_name="layers",
+                    requested=self.layers,
+                    minimum=1,
+                    maximum=6,
+                    label="线路层数",
+                    task_id=self.task_id,
+                )
             if not 5 <= self.max_iter <= 100:
-                raise ValueError("QAOA优化轮数必须在5到100之间。")
+                raise capability_limit_error(
+                    algorithm="qaoa",
+                    field_name="max_iter",
+                    requested=self.max_iter,
+                    minimum=5,
+                    maximum=100,
+                    label="优化轮数",
+                    task_id=self.task_id,
+                )
             if not self.edges:
                 self.edges = default_edges(self.qubits)
             for u, v in self.edges:
                 if u == v or min(u, v) < 0 or max(u, v) >= self.qubits:
-                    raise ValueError(f"非法图边: ({u}, {v})。")
+                    raise invalid_parameter_error(
+                        code="INVALID_GRAPH_EDGE",
+                        message=f"图边({u}, {v})超出QAOA图的顶点范围。",
+                        field_name="edges",
+                        algorithm="qaoa",
+                        requested=[u, v],
+                        allowed={"vertex_min": 0, "vertex_max": self.qubits - 1, "self_loop": False},
+                        task_id=self.task_id,
+                    )
         if self.device not in {"cpu", "gpu", "both"}:
-            raise ValueError("执行设备只能是cpu、gpu或both。")
+            raise invalid_parameter_error(
+                code="INVALID_DEVICE",
+                message="执行设备只能是cpu、gpu或both。",
+                field_name="device",
+                requested=self.device,
+                allowed=["cpu", "gpu", "both"],
+                task_id=self.task_id,
+            )
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -76,7 +152,7 @@ class ExperimentResult:
     verification: dict[str, Any] = field(default_factory=dict)
     artifacts: dict[str, str] = field(default_factory=dict)
     warnings: list[str] = field(default_factory=list)
-    error: str | None = None
+    error: dict[str, Any] | None = None
     started_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     finished_at: str | None = None
 
@@ -111,4 +187,3 @@ def json_safe(value: Any) -> Any:
     if isinstance(value, Path):
         return str(value)
     return value
-

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import inspect
 import os
 import subprocess
 import sys
@@ -9,6 +10,31 @@ from typing import Any
 
 
 BIREN_ENV_SCRIPT = Path("/usr/local/birensupa/br_container_tools/brsw_set_env.sh")
+
+
+def ensure_algorithm_execute_compat() -> bool:
+    """Add the optional dtype keyword when a UnitaryLab 1.0 wheel omits it."""
+    from unitarylab import Circuit
+
+    execute = Circuit.execute
+    if "dtype" in inspect.signature(execute).parameters:
+        return False
+    if getattr(execute, "_quantaforge_dtype_compat", False):
+        return False
+
+    def compatible_execute(
+        self,
+        initial_state=None,
+        backend: str = "torch",
+        device: str = "cpu",
+        dtype=None,
+    ):
+        del dtype
+        return execute(self, initial_state=initial_state, backend=backend, device=device)
+
+    compatible_execute._quantaforge_dtype_compat = True  # type: ignore[attr-defined]
+    Circuit.execute = compatible_execute
+    return True
 
 
 def activate_biren_environment() -> bool:

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import inspect
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
@@ -12,7 +13,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from quantaforge.runtime import warmup_biren_backend
+from quantaforge.runtime import ensure_algorithm_execute_compat, warmup_biren_backend
 
 
 class _FakeCircuit:
@@ -41,6 +42,20 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(result["state_dimension"], 4)
         self.assertLess(result["max_abs_error"], 1e-5)
         self.assertGreaterEqual(result["elapsed_s"], 0.0)
+
+    def test_algorithm_execute_compat_adds_missing_dtype_keyword(self) -> None:
+        class FakeCircuit:
+            def execute(self, initial_state=None, backend="torch", device="cpu"):
+                return initial_state, backend, device
+
+        fake_unitarylab = SimpleNamespace(Circuit=FakeCircuit)
+        with patch.dict(sys.modules, {"unitarylab": fake_unitarylab}):
+            self.assertTrue(ensure_algorithm_execute_compat())
+        self.assertIn("dtype", inspect.signature(FakeCircuit.execute).parameters)
+        self.assertEqual(
+            FakeCircuit().execute(initial_state="s", backend="torch", device="cpu", dtype="complex128"),
+            ("s", "torch", "cpu"),
+        )
 
 
 if __name__ == "__main__":

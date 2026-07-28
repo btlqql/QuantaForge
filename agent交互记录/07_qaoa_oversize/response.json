@@ -1,0 +1,35 @@
+{
+  "status": "failed",
+  "task_id": "91cceaaf4181",
+  "summary": "请求未执行：请求的QAOA量子比特数为12，超出当前允许范围2至10。",
+  "plan": [],
+  "metrics": {},
+  "verification": {
+    "passed": false,
+    "executed": false
+  },
+  "artifacts": {},
+  "warnings": [],
+  "error": {
+    "code": "CAPABILITY_LIMIT_EXCEEDED",
+    "type": "validation_error",
+    "message": "请求的QAOA量子比特数为12，超出当前允许范围2至10。",
+    "http_status": 422,
+    "recoverable": true,
+    "retryable": false,
+    "suggestions": [
+      "将量子比特数调整到2至10",
+      "修改请求后重新提交，当前请求未启动量子执行"
+    ],
+    "field": "qubits",
+    "algorithm": "qaoa",
+    "requested": 12,
+    "allowed": {
+      "min": 2,
+      "max": 10
+    },
+    "details": {
+      "task_id": "91cceaaf4181"
+    }
+  }
+}

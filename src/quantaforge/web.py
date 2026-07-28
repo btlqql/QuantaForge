@@ -9,6 +9,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
+from .errors import QuantaForgeError, error_response, normalize_error
 from .service import QuantumExperimentAgent
 from .runtime import BIREN_ENV_SCRIPT, ensure_biren_process, warmup_biren_backend
 
@@ -58,13 +59,23 @@ def create_handler(agent: QuantumExperimentAgent):
                     self._json(agent.run(prompt, default_device=device).to_dict())
                     return
                 self.send_error(HTTPStatus.NOT_FOUND)
-            except ValueError as exc:
-                self._json({"error": str(exc)}, status=HTTPStatus.BAD_REQUEST)
-            except Exception as exc:
-                self._json(
-                    {"error": f"{type(exc).__name__}: {exc}"},
-                    status=HTTPStatus.INTERNAL_SERVER_ERROR,
+            except QuantaForgeError as exc:
+                self._json(error_response(exc), status=HTTPStatus(exc.http_status))
+            except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+                malformed = QuantaForgeError(
+                    code="MALFORMED_JSON",
+                    error_type="input_error",
+                    message="请求正文不是有效的JSON。",
+                    field="body",
+                    recoverable=True,
+                    suggestions=["使用Content-Type: application/json并检查JSON语法"],
+                    details={"exception_type": type(exc).__name__},
+                    http_status=HTTPStatus.BAD_REQUEST,
                 )
+                self._json(error_response(malformed), status=HTTPStatus.BAD_REQUEST)
+            except Exception as exc:
+                structured = normalize_error(exc)
+                self._json(error_response(structured), status=HTTPStatus(structured.http_status))
 
         def _json(self, payload: dict, *, status: HTTPStatus = HTTPStatus.OK) -> None:
             data = json.dumps(payload, ensure_ascii=False).encode("utf-8")

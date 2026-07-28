@@ -1,0 +1,65 @@
+[
+  {
+    "id": "01_bell_cpu",
+    "title": "Bell纠缠态CPU执行与解析验证",
+    "prompt": "构建Bell纠缠态，使用CPU执行并验证结果",
+    "device": "cpu",
+    "expected": {"status": "success", "algorithm": "bell", "verification_passed": true}
+  },
+  {
+    "id": "02_ghz_cpu",
+    "title": "5比特GHZ态CPU执行与解析验证",
+    "prompt": "构建5个量子比特的GHZ态，使用CPU执行并验证概率",
+    "device": "cpu",
+    "expected": {"status": "success", "algorithm": "ghz", "verification_passed": true}
+  },
+  {
+    "id": "03_grover_cpu",
+    "title": "5比特Grover目标态搜索与理论验证",
+    "prompt": "用5个量子比特运行Grover搜索，目标状态为10110，使用CPU执行并验证",
+    "device": "cpu",
+    "expected": {"status": "success", "algorithm": "grover", "verification_passed": true}
+  },
+  {
+    "id": "04_qaoa_cpu",
+    "title": "4比特QAOA MaxCut与经典最优值验证",
+    "prompt": "用4个量子比特运行QAOA MaxCut，层数2，优化30轮，使用CPU",
+    "device": "cpu",
+    "expected": {"status": "success", "algorithm": "qaoa", "verification_passed": true}
+  },
+  {
+    "id": "05_ghz_oversize",
+    "title": "GHZ超规模请求结构化拒绝",
+    "prompt": "用25个量子比特构建GHZ态并使用GPU执行",
+    "device": "gpu",
+    "expected": {"status": "failed", "error_code": "CAPABILITY_LIMIT_EXCEEDED", "field": "qubits", "requested": 25}
+  },
+  {
+    "id": "06_grover_oversize",
+    "title": "Grover超规模请求结构化拒绝",
+    "prompt": "用13个量子比特运行Grover搜索，目标状态为1111111111111，使用GPU",
+    "device": "gpu",
+    "expected": {"status": "failed", "error_code": "CAPABILITY_LIMIT_EXCEEDED", "field": "qubits", "requested": 13}
+  },
+  {
+    "id": "07_qaoa_oversize",
+    "title": "QAOA超规模请求结构化拒绝",
+    "prompt": "用12个量子比特运行QAOA MaxCut，层数2，优化30轮，使用GPU",
+    "device": "gpu",
+    "expected": {"status": "failed", "error_code": "CAPABILITY_LIMIT_EXCEEDED", "field": "qubits", "requested": 12}
+  },
+  {
+    "id": "08_qaoa_layers_oversize",
+    "title": "QAOA线路层数越界结构化拒绝",
+    "prompt": "用4个量子比特运行QAOA MaxCut，层数8，优化30轮，使用CPU",
+    "device": "cpu",
+    "expected": {"status": "failed", "error_code": "CAPABILITY_LIMIT_EXCEEDED", "field": "layers", "requested": 8}
+  },
+  {
+    "id": "09_unsupported_algorithm",
+    "title": "不支持算法请求结构化拒绝",
+    "prompt": "请运行Shor算法分解15，使用CPU",
+    "device": "cpu",
+    "expected": {"status": "failed", "error_code": "UNSUPPORTED_ALGORITHM", "field": "algorithm"}
+  }
+]

@@ -34,7 +34,7 @@ QuantaForge 面向不熟悉量子编程框架的科研、教学和开发用户�
 - SUPA 1.11 / BR-SMI 1.11.0
 - Python 3.10
 - UnitaryLab 1.0.0
-- UnitaryLab Algorithms 1.1.x
+- UnitaryLab Algorithms 1.1.0
 
 项目通过 UnitaryLab 的 `device="gpu"` 使用壁仞GPU。壁仞环境采用 SUPA/`torch_br` 后端，不能用 `torch.cuda.is_available()` 作为GPU可用性的判断依据，应以 `brsmi` 和实际UnitaryLab GPU实验为准。
 
@@ -89,6 +89,22 @@ python3 scripts/validate_correctness.py --quick
 python3 scripts/validate_correctness.py
 ```
 
+可复现QA与原始Agent交互记录：
+
+```bash
+python3 qa/run_reproducible_qa.py
+```
+
+该脚本实际运行4条正常算法案例和5条异常案例，自动生成：
+
+- `qa/results/qa_results.json`：机器可读实测汇总。
+- `qa/results/qa_report.md`：审查用QA报告。
+- `qa/results/qa_run.log`：一键运行日志。
+- `agent交互记录/`：每条交互的原始请求、完整响应、日志和逐段记录。
+- `agent交互记录.md`：放在项目根目录的醒目索引。
+
+当前实测为9/9通过。超规模请求不会启动量子后端，而是返回包含错误代码、请求值、允许范围、HTTP状态和修正建议的结构化结果。Web接口对能力越界使用HTTP 422。
+
 生成文件位于 `reports/generated/`，包括JSON结果、Markdown报告、线路图和算法日志。
 
 验证方法：
@@ -129,9 +145,12 @@ QuantaForge/
 ├── src/quantaforge/          # Agent、解析、执行、验证、Web服务
 ├── web/static/               # 无额外前端依赖的演示界面
 ├── scripts/                  # 验证、基准、环境取证和启动脚本
-├── tests/                    # 解析与验证单元测试
+├── tests/                    # 解析、结构化错误、Web与验证单元测试
+├── qa/                       # 一键可复现QA脚本、案例与实测报告
+├── agent交互记录/            # 9段实际生成的原始Agent问答及运行日志
+├── agent交互记录.md          # 原始Agent问答醒目索引
 ├── docs/                     # 场景、架构、能力边界与调用链
-├── agent_logs/               # Agent/Skill开发交互记录
+├── agent_logs/               # 7段开发过程摘要（与原始问答分开）
 ├── reports/generated/        # GPU实测结果
 └── presentation/             # PPT、视频脚本和展示图片
 ```

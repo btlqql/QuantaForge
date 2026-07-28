@@ -1,0 +1,4 @@
+{
+  "prompt": "用12个量子比特运行QAOA MaxCut，层数2，优化30轮，使用GPU",
+  "device": "gpu"
+}

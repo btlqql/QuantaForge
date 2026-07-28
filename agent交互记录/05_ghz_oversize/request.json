@@ -1,0 +1,4 @@
+{
+  "prompt": "用25个量子比特构建GHZ态并使用GPU执行",
+  "device": "gpu"
+}

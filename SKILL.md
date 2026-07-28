@@ -42,6 +42,8 @@ QuantaForge 是面向量子模拟与算法执行的可验证实验技能。技�
 
 1. 调用 `parse_experiment` 将自然语言转为 `ExperimentSpec`。
 2. 检查算法白名单、量子比特数、目标状态、图边、层数及运行预算。
+   - 用户输入错误统一返回机器可读错误对象，不输出裸异常字符串。
+   - 能力越界返回`CAPABILITY_LIMIT_EXCEEDED`，包含请求值、允许范围、HTTP状态和修正建议。
 3. 生成六步实验计划，向用户明确即将执行的任务。
 4. 使用 UnitaryLab 或 UnitaryLab Algorithms 构建真实量子线路。
 5. 按 `device` 在CPU、壁仞GPU或二者上执行。
@@ -92,6 +94,14 @@ python3 -m quantaforge.web --skip-gpu-warmup
 python3 scripts/validate_correctness.py
 ```
 
+可复现QA与原始Agent交互记录：
+
+```bash
+python3 qa/run_reproducible_qa.py
+```
+
+脚本实际调用Agent运行4条正常实验和5条异常请求，生成`qa/results/qa_results.json`、`qa_report.md`以及根目录`agent交互记录/`内的原始请求、完整响应、日志和逐段问答。任一核验失败时以非零状态退出。
+
 性能测试：
 
 ```bash
@@ -117,6 +127,7 @@ python3 scripts/benchmark.py --sizes 8,12,16,20,22,24,25,26 --warmups 2 --repeat
 - `verification`：验证方法、误差、阈值和通过状态。
 - `artifacts`：线路、日志、结果和报告链接。
 - `warnings`：性能或能力边界提示。
+- `error`：失败时包含`code`、`type`、`http_status`、`message`、`field`、`requested`、`allowed`、`recoverable`、`retryable`和`suggestions`；成功时为`null`。
 
 禁止把模型生成的描述当作验证证据。只有数值检查通过时，`verification.passed` 才能为 `true`。
 
@@ -142,7 +153,7 @@ python3 scripts/benchmark.py --sizes 8,12,16,20,22,24,25,26 --warmups 2 --repeat
 
 ## 失败处理
 
-- 无法识别算法时，要求用户明确选择支持的任务。
-- 参数越界时不执行，并返回可操作的修正说明。
-- GPU失败时保留错误，不伪造GPU结果；可提示用户切换CPU诊断。
+- 无法识别算法时返回`UNSUPPORTED_ALGORITHM`，要求用户明确选择支持的任务。
+- 参数越界时不执行，返回`CAPABILITY_LIMIT_EXCEEDED`及请求值、允许范围和修正建议；Web使用HTTP 422。
+- GPU或后端失败时返回`BACKEND_EXECUTION_FAILED`，保留任务ID、算法、请求设备和安全诊断信息，不伪造GPU结果。
 - 验证不通过时返回 `partial_success`，不得声称结果正确。

@@ -1,0 +1,19 @@
+[QA] 01_bell_cpu Bell纠缠态CPU执行与解析验证
+[QA] 01_bell_cpu PASS
+[QA] 02_ghz_cpu 5比特GHZ态CPU执行与解析验证
+[QA] 02_ghz_cpu PASS
+[QA] 03_grover_cpu 5比特Grover目标态搜索与理论验证
+[QA] 03_grover_cpu PASS
+[QA] 04_qaoa_cpu 4比特QAOA MaxCut与经典最优值验证
+[QA] 04_qaoa_cpu PASS
+[QA] 05_ghz_oversize GHZ超规模请求结构化拒绝
+[QA] 05_ghz_oversize PASS
+[QA] 06_grover_oversize Grover超规模请求结构化拒绝
+[QA] 06_grover_oversize PASS
+[QA] 07_qaoa_oversize QAOA超规模请求结构化拒绝
+[QA] 07_qaoa_oversize PASS
+[QA] 08_qaoa_layers_oversize QAOA线路层数越界结构化拒绝
+[QA] 08_qaoa_layers_oversize PASS
+[QA] 09_unsupported_algorithm 不支持算法请求结构化拒绝
+[QA] 09_unsupported_algorithm PASS
+QA result: 9/9 passed

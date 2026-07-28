@@ -7,8 +7,10 @@ from typing import Any
 
 import numpy as np
 
+from .errors import normalize_error
 from .models import ExperimentResult, ExperimentSpec, json_safe
 from .planner import build_plan
+from .runtime import ensure_algorithm_execute_compat
 from .verification import verify_ghz, verify_grover, verify_qaoa
 
 
@@ -32,9 +34,14 @@ def run_experiment(spec: ExperimentSpec, artifact_root: Path) -> ExperimentResul
         else:
             raise ValueError(f"不支持的算法: {spec.algorithm}")
     except Exception as exc:
+        structured = normalize_error(exc, execution=True)
+        structured.details.update(
+            {"task_id": spec.task_id, "algorithm": spec.algorithm, "requested_device": spec.device}
+        )
         result.status = "failed"
-        result.error = f"{type(exc).__name__}: {exc}"
-        result.summary = "实验执行失败，已保留任务参数供诊断。"
+        result.error = structured.to_error_dict()
+        result.summary = f"实验执行失败：{structured.message}"
+        result.verification = {"passed": False, "executed": False}
     result.finish()
     report_path = result.save(task_dir)
     result.artifacts["experiment_report"] = _artifact_url(spec.task_id, report_path, task_dir)
@@ -90,6 +97,7 @@ def _run_ghz(spec: ExperimentSpec, task_dir: Path, result: ExperimentResult) -> 
 
 
 def _run_grover(spec: ExperimentSpec, task_dir: Path, result: ExperimentResult) -> None:
+    ensure_algorithm_execute_compat()
     from unitarylab_algorithms import GroverAlgorithm
 
     device_runs: dict[str, dict[str, Any]] = {}
@@ -151,6 +159,7 @@ def _run_grover(spec: ExperimentSpec, task_dir: Path, result: ExperimentResult) 
 
 
 def _run_qaoa(spec: ExperimentSpec, task_dir: Path, result: ExperimentResult) -> None:
+    ensure_algorithm_execute_compat()
     from unitarylab_algorithms import QAOAAlgorithm
 
     device_runs: dict[str, dict[str, Any]] = {}

@@ -1,0 +1,4 @@
+{
+  "prompt": "请运行Shor算法分解15，使用CPU",
+  "device": "cpu"
+}

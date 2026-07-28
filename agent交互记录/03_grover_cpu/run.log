@@ -1,0 +1,34 @@
+case=03_grover_cpu
+started_at=2026-07-28T09:14:46.314247+00:00
+finished_at=2026-07-28T09:14:47.160779+00:00
+elapsed_s=0.847146000
+passed=True
+stdout:
+[GROVER]: Starting Grover Algorithm
+[GROVER]: Input parameters: 
+        - Number of qubits (n) = 5
+        - Target state (binary string) = 10110
+[GROVER]: Stage 1/5: Preparing algorithm parameters...
+[GROVER]:   - Data register size: n = 5 (total 6 qubits)
+[GROVER]:   - Initial success probability p: 0.0312
+[GROVER]:   - Computed iteration count (Reps): 4
+[GROVER]: Stage 1/5 complete ✓
+[GROVER]: Stage 2/5: Building quantum circuit...
+[GROVER]: Stage 2/5 complete ✓
+[GROVER]: Stage 3/5: Running quantum simulation...
+[GROVER]:   - Computation time: 0.0063 s
+[GROVER]: Stage 3/5 complete ✓
+[GROVER]: Stage 4/5: Running classical post-processing (verifying amplification effect)...
+[GROVER]:   - Initial target-state probability: 0.0312
+[GROVER]:   - Amplified target-state probability: 0.9992
+[GROVER]:   - Result check: find target state 01101
+[GROVER]: Stage 4/5 complete ✓
+[GROVER]: Stage 5/5: Exporting quantum circuit diagram...
+[GROVER]: Output information: 
+        - Amplified target-state probability = 0.99918133020401
+        - Result = 01101
+[GROVER]:   Circuit diagram saved: C:\Users\ASUS\Documents\Codex\2026-07-22\https-ai4scompetition-intern-ai-org-cn\work\QuantaForge\qa\artifacts\321b134cffd0\grover_cpu/grover_algorithm_circuit.svg
+[GROVER]:   Result saved: C:\Users\ASUS\Documents\Codex\2026-07-22\https-ai4scompetition-intern-ai-org-cn\work\QuantaForge\qa\artifacts\321b134cffd0\grover_cpu/grover_algorithm_result.txt
+
+stderr:
+

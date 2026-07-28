@@ -3,7 +3,9 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
 
+from .errors import error_response, normalize_error
 from .service import QuantumExperimentAgent
 from .runtime import ensure_biren_process
 
@@ -30,9 +32,14 @@ def main() -> None:
     if not prompt:
         parser.error("请提供实验需求，或使用--example。")
     agent = QuantumExperimentAgent(Path(args.artifacts))
-    payload = agent.plan(prompt, default_device=args.device) if args.plan_only else agent.run(
-        prompt, default_device=args.device
-    ).to_dict()
+    try:
+        payload = agent.plan(prompt, default_device=args.device) if args.plan_only else agent.run(
+            prompt, default_device=args.device
+        ).to_dict()
+    except Exception as exc:
+        payload = error_response(normalize_error(exc))
+        print(json.dumps(payload, ensure_ascii=False, indent=2))
+        sys.exit(2)
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 
 
